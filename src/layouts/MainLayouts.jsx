@@ -6,7 +6,7 @@ const MainLayouts = () => {
     return (
         <div>
             <Navbar></Navbar>
-            <div className="h-screen"><Outlet></Outlet></div>
+            <div><Outlet></Outlet></div>
             <Footer></Footer>
         </div>
     );

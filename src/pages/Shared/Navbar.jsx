@@ -7,12 +7,13 @@ const Navbar = () => {
   const navbar_links = (
     <>
       <NavLink to="/">Home</NavLink>
+      <NavLink to="/sessions">Sessions</NavLink>
       <NavLink to="/dashboard">Dashboard</NavLink>
     </>
   );
 
   return (
-    <div className="bg-black text-white">
+    <div className="bg-black text-white py-1 sticky top-0 z-50">
       <div className="navbar w-11/12 mx-auto py-2">
         <div className="navbar-start">
           <div className="dropdown">
