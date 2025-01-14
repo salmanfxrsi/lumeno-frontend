@@ -48,8 +48,8 @@ const Navbar = () => {
           {/* Logo and BrandName */}
           <Link className="flex items-center gap-1">
             {/* <img className="w-9 lg:hidden" src={logo} alt="" /> */}
-            <h1 className="text-xl font-black uppercase hidden lg:block">
-              Lumeno - Learning Platform
+            <h1 className="text-xl font-black uppercase hidden lg:block animate-bounce">
+              Lumenoooooo
             </h1>
           </Link>
           <div></div>
