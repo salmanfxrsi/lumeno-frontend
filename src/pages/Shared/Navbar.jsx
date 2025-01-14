@@ -55,7 +55,7 @@ const Navbar = () => {
           </div>
         </div>
         <div className="navbar-end">
-          <button className="flex items-center gap-1 bg-[#ABEF5F] font-black uppercase w-[144px] px-5 py-3 text-sm text-black transition-colors duration-300 transform rounded-md lg:w-auto hover:bg-gray-500 focus:outline-none focus:bg-gray-500">
+          <button className="flex items-center gap-1 bg-[#ABEF5F] font-black uppercase w-[144px] px-5 py-3 text-sm text-black transition-colors duration-300 transform rounded-md lg:w-auto hover:bg-gray-500 focus:outline-none">
             <h1>Login Now</h1>
             <IoLogIn className="text-xl" />
           </button>
