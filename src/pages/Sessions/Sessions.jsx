@@ -4,10 +4,13 @@ import useSessions from "../../hooks/useSessions";
 import { FaSearch } from "react-icons/fa";
 import { RiResetRightFill } from "react-icons/ri";
 import { useState } from "react";
+import Loading from "../../components/Loading";
 
 const Sessions = () => {
   const [search, setSearch] = useState("");
-  const [sessions] = useSessions(search);
+  const [isLoading, sessions] = useSessions();
+
+  if (isLoading) return <Loading></Loading>;
 
   return (
     <div className="py-24 w-11/12 lg:container mx-auto">

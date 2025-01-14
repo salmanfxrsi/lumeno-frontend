@@ -5,6 +5,7 @@ import Sessions from "../pages/Sessions/Sessions";
 import Error from "../components/Error";
 import Register from "../pages/Authentication/Register";
 import Login from "../pages/Authentication/Login";
+import SessionDetails from "../pages/SessionDetails/SessionDetails";
 
 const router = createBrowserRouter([
   {
@@ -28,6 +29,10 @@ const router = createBrowserRouter([
         path: "register",
         element: <Register />,
       },
+      {
+        path: "sessions/:id",
+        element: <SessionDetails />
+      }
     ],
   },
 ]);

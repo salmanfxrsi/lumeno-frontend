@@ -2,10 +2,13 @@
 import { Link } from "react-router-dom";
 
 const SessionCard = ({ data }) => {
-  const { sessionTitle, sessionDescription } = data;
+  const { _id, sessionTitle, sessionDescription } = data;
 
   return (
-    <Link className="shadow-2xl rounded-2xl hover:p-2 duration-300 hover:bg-slate-200">
+    <Link
+      to={`/sessions/${_id}`}
+      className="shadow-2xl rounded-2xl hover:p-2 duration-300 hover:bg-slate-200"
+    >
       <div className="card-body">
         <div className="flex items-center gap-2">
           <h2 className="card-title">{sessionTitle}</h2>
