@@ -1,5 +1,6 @@
 import { SiObsstudio } from "react-icons/si";
 import bg_banner from "../../../assets/Home/bg_banner.jpg";
+import { Link } from "react-router-dom";
 
 export default function Banner() {
   return (
@@ -23,10 +24,10 @@ export default function Banner() {
             Dive into a new era of collaborative education and unlock your full
             potential today!
           </p>
-          <button className="flex items-center gap-1.5 bg-[#ABEF5F] font-black uppercase w-[200px] px-5 py-3 text-sm text-black transition-colors duration-300 transform rounded-md lg:w-auto hover:bg-gray-500 focus:outline-none focus:bg-gray-500 mx-auto justify-center">
-            <h1>Explore Now</h1>
+          <Link to='sessions' className="flex items-center gap-1.5 bg-[#ABEF5F] font-black uppercase w-[170px] px-5 py-3 text-sm text-black transition-colors duration-300 transform rounded-md hover:bg-gray-500 focus:outline-none mx-auto justify-center">
+            <h1>Learn Now</h1>
             <SiObsstudio className="text-xl" />
-          </button>
+          </Link>
         </div>
       </div>
     </div>

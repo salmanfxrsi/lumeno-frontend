@@ -1,8 +1,13 @@
 import { IoLogIn } from "react-icons/io5";
-import { Link, NavLink } from "react-router-dom";
+import { Link, NavLink, useNavigate } from "react-router-dom";
+import useAuth from "../../hooks/useAuth";
+import toast from "react-hot-toast";
 // import logo from  '../../assets/logo.png'
 
 const Navbar = () => {
+  const { user, signOut } = useAuth();
+  const navigate = useNavigate('/')
+
   // NavLinks
   const navbar_links = (
     <>
@@ -54,11 +59,40 @@ const Navbar = () => {
             {navbar_links}
           </div>
         </div>
-        <div className="navbar-end">
-          <button className="flex items-center gap-1 bg-[#ABEF5F] font-black uppercase w-[144px] px-5 py-3 text-sm text-black transition-colors duration-300 transform rounded-md lg:w-auto hover:bg-gray-500 focus:outline-none">
-            <h1>Login Now</h1>
-            <IoLogIn className="text-xl" />
-          </button>
+        <div className="navbar-end flex gap-6">
+          {/* avatar */}
+          {user && (
+            <div className="avatar online">
+              <div className="w-11 rounded-full">
+                <img src={user?.photoURL} />
+              </div>
+            </div>
+          )}
+          {/* login button */}
+          {!user && (
+            <Link
+              to="login"
+              className="flex items-center gap-1 bg-[#ABEF5F] font-black uppercase w-[144px] px-5 py-3 text-sm text-black transition-colors duration-300 transform rounded-md lg:w-auto hover:bg-gray-500 focus:outline-none"
+            >
+              <h1>Login Now</h1>
+              <IoLogIn className="text-xl" />
+            </Link>
+          )}
+          {/* logout button */}
+          {user && (
+            <button
+              onClick={() => {
+                signOut();
+                toast.success("Logout Successful");
+                navigate('/')
+              }}
+              to="login"
+              className="flex items-center gap-1 bg-[#ABEF5F] font-black uppercase w-[144px] px-5 py-3 text-sm text-black transition-colors duration-300 transform rounded-md lg:w-auto hover:bg-gray-500 focus:outline-none"
+            >
+              <h1>Sign Out</h1>
+              <IoLogIn className="text-xl" />
+            </button>
+          )}
         </div>
       </div>
     </div>
