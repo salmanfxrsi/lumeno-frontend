@@ -6,6 +6,8 @@ import Error from "../components/Error";
 import Register from "../pages/Authentication/Register";
 import Login from "../pages/Authentication/Login";
 import SessionDetails from "../pages/SessionDetails/SessionDetails";
+import DashboardLayout from "../layouts/DashboardLayout";
+import AllUsers from "../pages/Admin/All Users/AllUsers";
 
 const router = createBrowserRouter([
   {
@@ -31,8 +33,18 @@ const router = createBrowserRouter([
       },
       {
         path: "sessions/:id",
-        element: <SessionDetails />
-      }
+        element: <SessionDetails />,
+      },
+    ],
+  },
+  {
+    path: "dashboard",
+    element: <DashboardLayout></DashboardLayout>,
+    children: [
+      {
+        path: "all-users",
+        element: <AllUsers></AllUsers>,
+      },
     ],
   },
 ]);

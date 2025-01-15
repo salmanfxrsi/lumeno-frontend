@@ -6,7 +6,7 @@ import toast from "react-hot-toast";
 
 const Navbar = () => {
   const { user, signOut } = useAuth();
-  const navigate = useNavigate('/')
+  const navigate = useNavigate("/");
 
   // NavLinks
   const navbar_links = (
@@ -18,7 +18,7 @@ const Navbar = () => {
   );
 
   return (
-    <div className=" shadow-xl bg-white py-2 sticky top-0 z-50">
+    <div className=" shadow-xl bg-[#ABEF5F] py-2 sticky top-0 z-50">
       <div className="navbar w-11/12 mx-auto py-2">
         <div className="navbar-start">
           <div className="dropdown">
@@ -72,7 +72,7 @@ const Navbar = () => {
           {!user && (
             <Link
               to="login"
-              className="flex items-center gap-1 bg-[#ABEF5F] font-black uppercase w-[144px] px-5 py-3 text-sm text-black transition-colors duration-300 transform rounded-md lg:w-auto hover:bg-gray-500 focus:outline-none"
+              className="flex items-center shadow-2xl border-2 border-black gap-1 bg-[#ABEF5F] font-black uppercase w-[144px] px-5 py-3 text-sm text-black transition-colors duration-300 transform rounded-md lg:w-auto hover:bg-gray-500 focus:outline-none"
             >
               <h1>Login Now</h1>
               <IoLogIn className="text-xl" />
@@ -84,10 +84,10 @@ const Navbar = () => {
               onClick={() => {
                 signOut();
                 toast.success("Logout Successful");
-                navigate('/')
+                navigate("/");
               }}
               to="login"
-              className="flex items-center gap-1 bg-[#ABEF5F] font-black uppercase w-[144px] px-5 py-3 text-sm text-black transition-colors duration-300 transform rounded-md lg:w-auto hover:bg-gray-500 focus:outline-none"
+              className="flex items-center gap-1 bg-[#EF4444] font-black uppercase w-[144px] px-5 py-3 text-sm text-white transition-colors duration-300 transform rounded-md lg:w-auto hover:bg-gray-500 focus:outline-none"
             >
               <h1>Sign Out</h1>
               <IoLogIn className="text-xl" />

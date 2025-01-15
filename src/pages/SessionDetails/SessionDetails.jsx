@@ -9,6 +9,7 @@ import { GoCodeReview } from "react-icons/go";
 import "swiper/css";
 import "swiper/css/navigation";
 import { Navigation } from "swiper/modules";
+import { Helmet } from "react-helmet-async";
 
 const SessionDetails = () => {
   const { id } = useParams();
@@ -26,6 +27,9 @@ const SessionDetails = () => {
 
   return (
     <div className="w-11/12 lg:container mx-auto grid grid-cols-2 gap-12 py-36">
+      <Helmet>
+        <title>{session.sessionTitle} | Lumeno</title>
+      </Helmet>
       {/* Session Details */}
       <div className="px-8 py-12 bg-white rounded-md shadow-md md:min-h-[350px]">
         <div className="flex items-center gap-2">
