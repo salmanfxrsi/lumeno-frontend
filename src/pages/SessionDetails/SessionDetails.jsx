@@ -10,10 +10,12 @@ import "swiper/css";
 import "swiper/css/navigation";
 import { Navigation } from "swiper/modules";
 import { Helmet } from "react-helmet-async";
+import useRole from "../../hooks/useRole";
 
 const SessionDetails = () => {
   const { id } = useParams();
   const axiosPublic = useAxiosPublic();
+  const [, role] = useRole();
 
   const { data: session = {}, isLoading } = useQuery({
     queryKey: ["session", id],
@@ -55,11 +57,13 @@ const SessionDetails = () => {
           <span className="font-bold">Class Start On:</span>{" "}
           {session.classStartTime}
         </p>
-        {/*  */}
-        <button className="animate-bounce flex items-center gap-1 bg-[#ABEF5F] font-black uppercase w-[144px] px-5 py-3 text-sm text-black transition-colors duration-300 transform rounded-md lg:w-auto hover:bg-gray-500 focus:outline-none mt-8">
-          <h1>Book Now</h1>
-          <MdOutlineMenuBook className="text-xl" />
-        </button>
+        {/* Book Now Button */}
+        {role === "student" && (
+          <button className="animate-bounce flex items-center gap-1 bg-[#ABEF5F] font-black uppercase w-[144px] px-5 py-3 text-sm text-black transition-colors duration-300 transform rounded-md lg:w-auto hover:bg-gray-500 focus:outline-none mt-8">
+            <h1>Book Now</h1>
+            <MdOutlineMenuBook className="text-xl" />
+          </button>
+        )}
       </div>
       {/* Session Reviews */}
       <div className="px-4 bg-white rounded-md shadow-md md:min-h-[350px]">

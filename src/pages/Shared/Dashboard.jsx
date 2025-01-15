@@ -39,7 +39,7 @@ const Dashboard = () => {
               <p className="">Manage Users</p>
             </NavLink>
             <NavLink
-              to="all-users"
+              to="admin-manage-sessions"
               className="flex items-center text-base font-bold gap-1"
             >
               <GiNotebook className="text-xl" />

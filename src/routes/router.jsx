@@ -8,6 +8,7 @@ import Login from "../pages/Authentication/Login";
 import SessionDetails from "../pages/SessionDetails/SessionDetails";
 import DashboardLayout from "../layouts/DashboardLayout";
 import AdminManageUsers from "../pages/Admin/Admin Manage Users/AdminManageUsers";
+import AdminManageSessions from "../pages/Admin/Admin Manage Sessions/AdminManageSessions";
 
 const router = createBrowserRouter([
   {
@@ -46,8 +47,9 @@ const router = createBrowserRouter([
         element: <AdminManageUsers></AdminManageUsers>,
       },
       {
-        path: "admin-all-sessions"
-      }
+        path: "admin-manage-sessions",
+        element: <AdminManageSessions></AdminManageSessions>,
+      },
     ],
   },
 ]);

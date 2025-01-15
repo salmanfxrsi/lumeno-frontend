@@ -62,11 +62,11 @@ const Navbar = () => {
         <div className="navbar-end flex gap-6">
           {/* avatar */}
           {user && (
-            <div className="avatar online">
+            <Link to='dashboard' className="avatar online">
               <div className="w-11 rounded-full">
                 <img src={user?.photoURL} />
               </div>
-            </div>
+            </Link>
           )}
           {/* login button */}
           {!user && (
