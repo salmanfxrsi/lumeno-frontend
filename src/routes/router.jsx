@@ -7,7 +7,7 @@ import Register from "../pages/Authentication/Register";
 import Login from "../pages/Authentication/Login";
 import SessionDetails from "../pages/SessionDetails/SessionDetails";
 import DashboardLayout from "../layouts/DashboardLayout";
-import AllUsers from "../pages/Admin/All Users/AllUsers";
+import AdminManageUsers from "../pages/Admin/Admin Manage Users/AdminManageUsers";
 
 const router = createBrowserRouter([
   {
@@ -42,9 +42,12 @@ const router = createBrowserRouter([
     element: <DashboardLayout></DashboardLayout>,
     children: [
       {
-        path: "all-users",
-        element: <AllUsers></AllUsers>,
+        path: "admin-manage-users",
+        element: <AdminManageUsers></AdminManageUsers>,
       },
+      {
+        path: "admin-all-sessions"
+      }
     ],
   },
 ]);

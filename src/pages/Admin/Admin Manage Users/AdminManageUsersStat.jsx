@@ -4,7 +4,7 @@ import { FaUsersGear } from "react-icons/fa6";
 import { MdAdminPanelSettings } from "react-icons/md";
 import { PiStudentBold } from "react-icons/pi";
 
-const AllUsersStat = ({ users, students, tutors, admins }) => {
+const AdminManageUsersStat = ({ users, students, tutors, admins }) => {
   return (
     <div className="stats w-full my-12">
       {/*  */}
@@ -46,11 +46,11 @@ const AllUsersStat = ({ users, students, tutors, admins }) => {
   );
 };
 
-AllUsersStat.propTypes = {
+AdminManageUsersStat.propTypes = {
   users: PropTypes.number,
   students: PropTypes.number,
   tutors: PropTypes.number,
   admins: PropTypes.number,
 };
 
-export default AllUsersStat;
+export default AdminManageUsersStat;

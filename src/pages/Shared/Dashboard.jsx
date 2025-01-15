@@ -2,10 +2,13 @@ import { FaUsersGear } from "react-icons/fa6";
 import { GiMaterialsScience, GiNotebook } from "react-icons/gi";
 import { IoIosHome } from "react-icons/io";
 import { Link, NavLink } from "react-router-dom";
+import useRole from "../../hooks/useRole";
+import Loading from "../../components/Loading";
 
 const Dashboard = () => {
-  // TODO: Work on Admin Check
-  const role = "student";
+  const [isLoading, role] = useRole();
+
+  if (isLoading) return <Loading></Loading>;
 
   return (
     <div className="mt-[50px] ml-[35px]">
@@ -26,28 +29,28 @@ const Dashboard = () => {
         </NavLink>
 
         {/* Admin Routes */}
-        {role === "student" && (
+        {role === "admin" && (
           <>
             <NavLink
-              to="all-users"
+              to="admin-manage-users"
               className="flex items-center text-base font-bold gap-1"
             >
               <FaUsersGear className="text-xl" />
-              <p className="">Lumeno Users</p>
+              <p className="">Manage Users</p>
             </NavLink>
             <NavLink
               to="all-users"
               className="flex items-center text-base font-bold gap-1"
             >
               <GiNotebook className="text-xl" />
-              <p className="">Study Sessions</p>
+              <p className="">Manage Sessions</p>
             </NavLink>
             <NavLink
               to="all-users"
               className="flex items-center text-base font-bold gap-1"
             >
               <GiMaterialsScience className="text-xl" />
-              <p className="">Study Materials</p>
+              <p className="">Manage Study Materials</p>
             </NavLink>
           </>
         )}

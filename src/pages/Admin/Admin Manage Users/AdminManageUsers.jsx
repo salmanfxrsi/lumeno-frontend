@@ -2,12 +2,12 @@ import { useQuery } from "@tanstack/react-query";
 import useAxiosSecure from "../../../hooks/useAxiosSecure";
 import { RiDeleteBin5Line } from "react-icons/ri";
 import { FaUsersGear } from "react-icons/fa6";
-import AllUsersStat from "./AllUsersStat";
+import AdminManageUsersStat from "./AdminManageUsersStat";
 import { Helmet } from "react-helmet-async";
 import Loading from "../../../components/Loading";
 import toast from "react-hot-toast";
 
-const AllUsers = () => {
+const AdminManageUsers = () => {
   const axiosSecure = useAxiosSecure();
 
   const {
@@ -61,15 +61,15 @@ const AllUsers = () => {
   return (
     <div className="container mx-auto">
       <Helmet>
-        <title>All Users | Lumeno</title>
+        <title>Manage Users | Lumeno Admin</title>
       </Helmet>
       <div className="flex justify-between">
-        <AllUsersStat
+        <AdminManageUsersStat
           users={users.length}
           students={users.filter((user) => user.role === "student").length}
           tutors={users.filter((user) => user.role === "tutor").length}
           admins={users.filter((user) => user.role === "admin").length}
-        ></AllUsersStat>
+        ></AdminManageUsersStat>
       </div>
       {/* Table */}
       <div className="overflow-x-auto">
@@ -106,7 +106,11 @@ const AllUsers = () => {
                   <h1 className="font-bold">{user?.email}</h1>
                 </td>
                 <td>
-                  <h1 className="font-bold">{user?.role ? user.role.charAt(0).toUpperCase() + user.role.slice(1) : ''}</h1>
+                  <h1 className="font-bold">
+                    {user?.role
+                      ? user.role.charAt(0).toUpperCase() + user.role.slice(1)
+                      : ""}
+                  </h1>
                 </td>
                 {/* User Role Change Button */}
                 <th>
@@ -143,4 +147,4 @@ const AllUsers = () => {
   );
 };
 
-export default AllUsers;
+export default AdminManageUsers;
