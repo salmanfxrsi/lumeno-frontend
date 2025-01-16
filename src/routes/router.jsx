@@ -9,6 +9,7 @@ import SessionDetails from "../pages/SessionDetails/SessionDetails";
 import DashboardLayout from "../layouts/DashboardLayout";
 import AdminManageUsers from "../pages/Admin/Admin Manage Users/AdminManageUsers";
 import AdminManageSessions from "../pages/Admin/Admin Manage Sessions/AdminManageSessions";
+import UpdateSession from "../pages/Update Session/UpdateSession";
 
 const router = createBrowserRouter([
   {
@@ -49,6 +50,10 @@ const router = createBrowserRouter([
       {
         path: "admin-manage-sessions",
         element: <AdminManageSessions></AdminManageSessions>,
+      },
+      {
+        path: "sessions/update/:id",
+        element: <UpdateSession></UpdateSession>,
       },
     ],
   },

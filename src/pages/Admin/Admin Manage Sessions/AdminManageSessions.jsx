@@ -20,11 +20,34 @@ const AdminManageSessions = () => {
   const handleDelete = async (id) => {
     try {
       await axiosSecure.delete(`/sessions/${id}`);
-      toast.success("Post Deleted");
+      toast.success("Session Deleted");
       refetch();
     } catch (error) {
       toast.error(error.message);
     }
+  };
+
+  const deleteConfirmation = (id) => {
+    toast((t) => (
+      <div className="flex gap-4 items-center justify-center">
+        <p className="font-semibold">Are You Sure?</p>
+        <button
+          className="bg-red-500 rounded-md w-full text-sm font-medium text-white capitalize transition-colors duration-300 transform lg:w-auto hover:bg-gray-500 text-center py-1 px-3"
+          onClick={() => {
+            toast.dismiss(t.id);
+            handleDelete(id);
+          }}
+        >
+          Delete
+        </button>
+        <button
+          className="bg-[#52C303] rounded-md w-full text-sm font-medium text-white capitalize transition-colors duration-300 transform lg:w-auto hover:bg-gray-500 text-center py-1 px-3"
+          onClick={() => toast.dismiss(t.id)}
+        >
+          Dismiss
+        </button>
+      </div>
+    ));
   };
 
   //   handle update status
@@ -85,9 +108,6 @@ const AdminManageSessions = () => {
 
                 {/* Manage Status */}
                 <td>
-                  {/* If status is approved or rejected */}
-                  {/* {session?.status === "approved" || session?.status === "rejected" && <h1 className="font-bold">{session?.status}</h1>} */}
-
                   {/* If status is pending */}
                   {session?.status === "pending" ? (
                     <div className="flex items-center gap-4 text-3xl ml-6">
@@ -125,14 +145,17 @@ const AdminManageSessions = () => {
                 </th>
                 {/* Update Session */}
                 <th>
-                  <button className="btn bg-[#ABEF5F] text-black text-xl">
+                  <Link
+                    to={`/dashboard/sessions/update/${session._id}`}
+                    className="btn bg-[#ABEF5F] text-black text-xl"
+                  >
                     <GrDocumentUpdate />
-                  </button>
+                  </Link>
                 </th>
                 {/* Delete Session */}
                 <th>
                   <button
-                    onClick={() => handleDelete(session._id)}
+                    onClick={() => deleteConfirmation(session._id)}
                     className="btn bg-red-500 text-white text-xl"
                   >
                     <RiDeleteBin5Line />
