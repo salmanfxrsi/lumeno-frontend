@@ -110,7 +110,7 @@ const AdminManageSessions = () => {
                 <td>
                   {/* If status is pending */}
                   {session?.status === "pending" ? (
-                    <div className="flex items-center gap-4 text-3xl ml-6">
+                    <div className="flex items-center gap-4 text-3xl">
                       <button
                         onClick={() =>
                           handleUpdateStatus(session._id, "approved")
@@ -146,7 +146,7 @@ const AdminManageSessions = () => {
                 {/* Update Session */}
                 <th>
                   <Link
-                    to={`/dashboard/sessions/update/${session._id}`}
+                    to={`/dashboard/admin-update-session/${session._id}`}
                     className="btn bg-[#ABEF5F] text-black text-xl"
                   >
                     <GrDocumentUpdate />

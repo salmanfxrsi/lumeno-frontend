@@ -69,8 +69,8 @@ Backend Repository of Lumeno can be accessed [here](https://github.com/salmanfxr
 
 ## 🔒 Admin Credentials
 
-- **Email:** [lumeno@gmail.com]
-- **Password:** [Lumeno123]
+- **Email:** lumeno@gmail.com
+- **Password:** Lumeno123
 
 ---
 
