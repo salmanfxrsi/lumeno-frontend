@@ -11,6 +11,7 @@ import AdminManageUsers from "../pages/Admin/Admin Manage Users/AdminManageUsers
 import AdminManageSessions from "../pages/Admin/Admin Manage Sessions/AdminManageSessions";
 import AdminUpdateSession from "../pages/Admin/Admin Manage Sessions/Admin Update  Session/AdminUpdateSession";
 import TutorCreateSession from "../pages/Tutor/Tutor Create Session/TutorCreateSession";
+import TutorManageSessions from "../pages/Tutor/TutorManageSessions/TutorManageSessions";
 
 const router = createBrowserRouter([
   {
@@ -59,6 +60,10 @@ const router = createBrowserRouter([
       {
         path: "tutor-create-session",
         element: <TutorCreateSession></TutorCreateSession>,
+      },
+      {
+        path: "tutor-manage-sessions",
+        element: <TutorManageSessions></TutorManageSessions>,
       },
     ],
   },

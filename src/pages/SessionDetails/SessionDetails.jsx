@@ -72,7 +72,7 @@ const SessionDetails = () => {
           modules={[Navigation]}
           className="mySwiper mt-32"
         >
-          {session.reviews.map((review, index) => (
+          {session?.reviews?.map((review, index) => (
             <SwiperSlide key={index}>
               <div className="px-24">
                 <div className="flex items-center gap-1 font-bold mb-3 text-2xl">

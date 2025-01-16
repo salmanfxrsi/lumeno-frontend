@@ -3,10 +3,12 @@ import useAuth from "../../../hooks/useAuth";
 import Loading from "../../../components/Loading";
 import useAxiosSecure from "../../../hooks/useAxiosSecure";
 import toast from "react-hot-toast";
+import { useNavigate } from "react-router-dom";
 
 const TutorCreateSession = () => {
   const { user, loading } = useAuth();
   const axiosSecure = useAxiosSecure();
+  const navigate = useNavigate();
 
   if (loading) return <Loading></Loading>;
 
@@ -41,6 +43,7 @@ const TutorCreateSession = () => {
       await axiosSecure.post(`/sessions`, sessionData);
       toast.success("Session Created");
       event.target.reset();
+      navigate("/dashboard/tutor-manage-sessions");
     } catch (error) {
       toast.error(error.message);
     }

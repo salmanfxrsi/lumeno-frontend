@@ -45,7 +45,7 @@ const Dashboard = () => {
               className="flex items-center text-base font-bold gap-1"
             >
               <MdOutlineManageAccounts className="text-xl" />
-              <p className="">Manage Sessions</p>
+              <p className="">My Sessions</p>
             </NavLink>
             <NavLink
               to="tutor-upload-material"
