@@ -11,11 +11,18 @@ import "swiper/css/navigation";
 import { Navigation } from "swiper/modules";
 import { Helmet } from "react-helmet-async";
 import useRole from "../../hooks/useRole";
+import { useEffect, useState } from "react";
 
 const SessionDetails = () => {
+  const [isRegistrationClose, setRegistrationClose] = useState(true);
   const { id } = useParams();
   const axiosPublic = useAxiosPublic();
   const [, role] = useRole();
+
+  // TODO: Fix Bug - State Becoming False After Refreshing Page
+  useEffect(() => {
+    setRegistrationClose(new Date() > new Date(session.registrationEndDate));
+  }, []);
 
   const { data: session = {}, isLoading } = useQuery({
     queryKey: ["session", id],
@@ -59,8 +66,16 @@ const SessionDetails = () => {
         </p>
         {/* Book Now Button */}
         {role === "student" && (
-          <button className="animate-bounce flex items-center gap-1 bg-[#ABEF5F] font-black uppercase w-[144px] px-5 py-3 text-sm text-black transition-colors duration-300 transform rounded-md lg:w-auto hover:bg-gray-500 focus:outline-none mt-8">
-            <h1>Book Now</h1>
+          <button
+            onClick={() => console.log("hello")}
+            disabled={isRegistrationClose}
+            className={`flex items-center gap-1 ${
+              isRegistrationClose
+                ? "bg-red-500 text-white cursor-not-allowed"
+                : "bg-[#ABEF5F] text-black"
+            } font-black uppercase w-[144px] px-5 py-3 text-sm transition-colors duration-300 transform rounded-md lg:w-auto hover:bg-gray-500 focus:outline-none mt-8`}
+          >
+            <h1>{isRegistrationClose ? "Registration Closed" : "Book Now"}</h1>
             <MdOutlineMenuBook className="text-xl" />
           </button>
         )}

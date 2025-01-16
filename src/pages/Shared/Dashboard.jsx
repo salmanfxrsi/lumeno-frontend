@@ -4,8 +4,13 @@ import { IoIosHome } from "react-icons/io";
 import { Link, NavLink } from "react-router-dom";
 import useRole from "../../hooks/useRole";
 import Loading from "../../components/Loading";
-import { MdAddChart, MdOutlineCloudUpload, MdOutlineManageAccounts } from "react-icons/md";
+import {
+  MdAddChart,
+  MdOutlineCloudUpload,
+  MdOutlineManageAccounts,
+} from "react-icons/md";
 import { SiMaterialformkdocs } from "react-icons/si";
+import { Helmet } from "react-helmet-async";
 
 const Dashboard = () => {
   const [isLoading, role] = useRole();
@@ -14,6 +19,9 @@ const Dashboard = () => {
 
   return (
     <div className="mt-[50px] ml-[35px]">
+      <Helmet>
+        <title>{role.charAt(0).toUpperCase() + role.slice(1)} Dashboard</title>
+      </Helmet>
       {/* Dashboard Heading */}
       <Link to="/">
         <h1 className="uppercase font-black text-[#151515] text-2xl">

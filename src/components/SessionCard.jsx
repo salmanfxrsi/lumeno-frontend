@@ -1,8 +1,14 @@
 /* eslint-disable react/prop-types */
+import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 
 const SessionCard = ({ data }) => {
-  const { _id, sessionTitle, sessionDescription } = data;
+  const [isRegistrationClose, setRegistrationClose] = useState(false);
+  const { _id, sessionTitle, sessionDescription, registrationEndDate } = data;
+
+  useEffect(() => {
+    setRegistrationClose(new Date() > new Date(registrationEndDate));
+  }, []);
 
   return (
     <Link
@@ -12,7 +18,15 @@ const SessionCard = ({ data }) => {
       <div className="card-body">
         <div className="flex items-center gap-2">
           <h2 className="card-title">{sessionTitle}</h2>
-          <div className="bg-red-500 text-white px-3 rounded-2xl">Closed</div>
+          <div
+            className={`${
+              isRegistrationClose
+                ? "bg-red-500 text-white"
+                : "bg-[#ABEF5F] text-black"
+            } font-semibold uppercase px-3 rounded-2xl`}
+          >
+            {isRegistrationClose ? "Closed" : "Ongoing"}
+          </div>
         </div>
         <p>{sessionDescription}</p>
         <div className="card-actions mt-2">
