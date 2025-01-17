@@ -1,11 +1,14 @@
 import { FaUsersGear } from "react-icons/fa6";
 import { GiMaterialsScience, GiNotebook } from "react-icons/gi";
+import { TbBrandBooking } from "react-icons/tb";
 import { IoIosHome } from "react-icons/io";
 import { Link, NavLink } from "react-router-dom";
 import useRole from "../../hooks/useRole";
 import Loading from "../../components/Loading";
 import {
   MdAddChart,
+  MdEventNote,
+  MdNoteAlt,
   MdOutlineCloudUpload,
   MdOutlineManageAccounts,
 } from "react-icons/md";
@@ -20,7 +23,9 @@ const Dashboard = () => {
   return (
     <div className="mt-[50px] ml-[35px]">
       <Helmet>
-        <title>{role.charAt(0).toUpperCase() + role.slice(1)} Dashboard</title>
+        <title>
+          {role.charAt(0).toUpperCase() + role.slice(1)} Dashboard | Lumeno{" "}
+        </title>
       </Helmet>
       {/* Dashboard Heading */}
       <Link to="/">
@@ -37,6 +42,40 @@ const Dashboard = () => {
           <IoIosHome className="text-xl" />
           <p className="mt-1">Home</p>
         </NavLink>
+
+        {/* Tutor Routes */}
+        {role === "student" && (
+          <>
+            <NavLink
+              to="student-booked-sessions"
+              className="flex items-center text-base font-bold gap-1"
+            >
+              <TbBrandBooking className="text-xl" />
+              <p className="">Booked Sessions</p>
+            </NavLink>
+            <NavLink
+              to="student-create-note"
+              className="flex items-center text-base font-bold gap-1"
+            >
+              <MdEventNote className="text-xl" />
+              <p className="">Create Note</p>
+            </NavLink>
+            <NavLink
+              to="student-manage-notes"
+              className="flex items-center text-base font-bold gap-1"
+            >
+              <MdNoteAlt className="text-xl" />
+              <p className="">Manage Notes</p>
+            </NavLink>
+            <NavLink
+              to="student-view-study-materials"
+              className="flex items-center text-base font-bold gap-1"
+            >
+              <SiMaterialformkdocs className="text-xl" />
+              <p className="">View Study Materials</p>
+            </NavLink>
+          </>
+        )}
 
         {/* Tutor Routes */}
         {role === "tutor" && (
