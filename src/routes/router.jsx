@@ -13,6 +13,7 @@ import AdminUpdateSession from "../pages/Admin/Admin Manage Sessions/Admin Updat
 import TutorCreateSession from "../pages/Tutor/Tutor Create Session/TutorCreateSession";
 import TutorManageSessions from "../pages/Tutor/TutorManageSessions/TutorManageSessions";
 import StudentCreateNote from "../pages/Student/Student Create Note/StudentCreateNote";
+import StudentManageNotes from "../pages/Student/Student Manage Notes/StudentManageNotes";
 
 const router = createBrowserRouter([
   {
@@ -72,7 +73,7 @@ const router = createBrowserRouter([
       },
       {
         path: "student-manage-notes",
-        element: <TutorManageSessions></TutorManageSessions>,
+        element: <StudentManageNotes></StudentManageNotes>,
       },
       {
         path: "student-view-study-materials",
