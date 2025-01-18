@@ -1,7 +1,7 @@
 import { useQuery } from "@tanstack/react-query";
 import useAxiosPublic from "./useAxiosPublic";
 
-const useSessions = (search) => {
+const useSessions = (search = "") => {
   const axiosPublic = useAxiosPublic();
 
   const {

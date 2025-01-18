@@ -11,7 +11,6 @@ import TutorManageSessionsStat from "./TutorManageSessionsStat";
 const TutorManageSessions = () => {
   const { user, loading } = useAuth();
   const axiosSecure = useAxiosSecure();
-  console.log(user?.email);
 
   const {
     isLoading,
