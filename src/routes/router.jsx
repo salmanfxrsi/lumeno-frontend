@@ -14,6 +14,7 @@ import TutorCreateSession from "../pages/Tutor/Tutor Create Session/TutorCreateS
 import TutorManageSessions from "../pages/Tutor/TutorManageSessions/TutorManageSessions";
 import StudentCreateNote from "../pages/Student/Student Create Note/StudentCreateNote";
 import StudentManageNotes from "../pages/Student/Student Manage Notes/StudentManageNotes";
+import PrivateRoutes from "./PrivateRoutes";
 
 const router = createBrowserRouter([
   {
@@ -39,13 +40,21 @@ const router = createBrowserRouter([
       },
       {
         path: "sessions/:id",
-        element: <SessionDetails />,
+        element: (
+          <PrivateRoutes>
+            <SessionDetails />
+          </PrivateRoutes>
+        ),
       },
     ],
   },
   {
     path: "dashboard",
-    element: <DashboardLayout></DashboardLayout>,
+    element: (
+      <PrivateRoutes>
+        <DashboardLayout></DashboardLayout>
+      </PrivateRoutes>
+    ),
     children: [
       {
         path: "admin-manage-users",

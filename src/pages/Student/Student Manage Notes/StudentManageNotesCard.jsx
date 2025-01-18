@@ -71,7 +71,7 @@ const StudentManageNotesCard = ({ note, refetch }) => {
     };
 
     try {
-      await axiosSecure.put(`/notes/${_id}`, noteData);
+      await axiosSecure.patch(`/notes/${_id}`, noteData);
       toast.success("Note Updated");
       refetch();
       setIsOpen(false);
