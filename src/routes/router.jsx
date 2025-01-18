@@ -15,6 +15,7 @@ import TutorManageSessions from "../pages/Tutor/TutorManageSessions/TutorManageS
 import StudentCreateNote from "../pages/Student/Student Create Note/StudentCreateNote";
 import StudentManageNotes from "../pages/Student/Student Manage Notes/StudentManageNotes";
 import PrivateRoutes from "./PrivateRoutes";
+import AdminRoutes from "./AdminRoutes";
 
 const router = createBrowserRouter([
   {
@@ -58,15 +59,33 @@ const router = createBrowserRouter([
     children: [
       {
         path: "admin-manage-users",
-        element: <AdminManageUsers></AdminManageUsers>,
+        element: (
+          <PrivateRoutes>
+            <AdminRoutes>
+              <AdminManageUsers></AdminManageUsers>
+            </AdminRoutes>
+          </PrivateRoutes>
+        ),
       },
       {
         path: "admin-manage-sessions",
-        element: <AdminManageSessions></AdminManageSessions>,
+        element: (
+          <PrivateRoutes>
+            <AdminRoutes>
+              <AdminManageSessions></AdminManageSessions>
+            </AdminRoutes>
+          </PrivateRoutes>
+        ),
       },
       {
         path: "admin-update-session/:id",
-        element: <AdminUpdateSession></AdminUpdateSession>,
+        element: (
+          <PrivateRoutes>
+            <AdminRoutes>
+              <AdminUpdateSession></AdminUpdateSession>
+            </AdminRoutes>
+          </PrivateRoutes>
+        ),
       },
       {
         path: "tutor-create-session",
