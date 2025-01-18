@@ -56,8 +56,8 @@ const TutorCreateSession = () => {
       </Helmet>
       {/* Header */}
       <div className="flex items-center gap-24">
-        <h1 className="text-xl font-black uppercase">
-          Hello {user?.displayName}, Request For A session Now
+        <h1 className="text-xl font-semibold uppercase">
+          Hello <span className="font-black">{user?.displayName}</span>, Request For A session Now
         </h1>
       </div>
 

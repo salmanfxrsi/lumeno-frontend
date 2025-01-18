@@ -11,18 +11,18 @@ import "swiper/css/navigation";
 import { Navigation } from "swiper/modules";
 import { Helmet } from "react-helmet-async";
 import useRole from "../../hooks/useRole";
-import { useEffect, useState } from "react";
+import { useState } from "react";
+import useAxiosSecure from "../../hooks/useAxiosSecure";
+import toast from "react-hot-toast";
+import useAuth from "../../hooks/useAuth";
 
 const SessionDetails = () => {
-  const [isRegistrationClose, setRegistrationClose] = useState(true);
+  const [isRegistrationClose, setRegistrationClose] = useState(false);
   const { id } = useParams();
   const axiosPublic = useAxiosPublic();
   const [, role] = useRole();
-
-  // TODO: Fix Bug - State Becoming False After Refreshing Page
-  useEffect(() => {
-    setRegistrationClose(new Date() > new Date(session.registrationEndDate));
-  }, []);
+  const axiosSecure = useAxiosSecure();
+  const { user } = useAuth();
 
   const { data: session = {}, isLoading } = useQuery({
     queryKey: ["session", id],
@@ -33,6 +33,22 @@ const SessionDetails = () => {
   });
 
   if (isLoading) return <Loading></Loading>;
+
+  const handleBookedSession = async () => {
+    const bookedSessionData = {
+      ...session,
+      studentEmail: user.email,
+      studentPhoto: user.photoURL,
+      studentName: user.displayName,
+    };
+
+    try {
+      await axiosSecure.post("/booked-sessions", bookedSessionData);
+      toast.success("Session Booked");
+    } catch (error) {
+      toast.error(error.message);
+    }
+  };
 
   return (
     <div className="w-11/12 lg:container mx-auto grid grid-cols-2 gap-12 py-36">
@@ -67,7 +83,7 @@ const SessionDetails = () => {
         {/* Book Now Button */}
         {role === "student" && (
           <button
-            onClick={() => console.log("hello")}
+            onClick={handleBookedSession}
             disabled={isRegistrationClose}
             className={`flex items-center gap-1 ${
               isRegistrationClose
