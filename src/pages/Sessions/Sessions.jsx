@@ -4,13 +4,10 @@ import useSessions from "../../hooks/useSessions";
 import { FaSearch } from "react-icons/fa";
 import { RiResetRightFill } from "react-icons/ri";
 import { useState } from "react";
-import Loading from "../../components/Loading";
 
 const Sessions = () => {
   const [search, setSearch] = useState("");
-  const [isLoading, sessions] = useSessions();
-
-  if (isLoading) return <Loading></Loading>;
+  const [, sessions] = useSessions(search); // Skip the first value [isLoading]
 
   return (
     <div className="py-24 w-11/12 lg:container mx-auto">
@@ -20,8 +17,8 @@ const Sessions = () => {
       {/* Search Section */}
       <div className="mb-16 flex justify-between items-center">
         {/* Search Bar */}
-        <div className="flex items-center border-4 border-black w-[500px] rounded-lg p-1">
-          <FaSearch className="text-black mx-3" />
+        <div className="flex items-center border-2 w-[500px] rounded-lg p-1">
+          <FaSearch className="text-gray-600 mx-3 text-xl" />
           <input
             type="text"
             placeholder="Search"
@@ -39,13 +36,20 @@ const Sessions = () => {
           <RiResetRightFill className="text-xl" />
         </button>
       </div>
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-        {sessions
-          .filter((session) => session.status === "approved")
-          .map((session) => (
-            <SessionCard key={session._id} data={session}></SessionCard>
-          ))}
-      </div>
+      {/* All Sessions Showcase */}
+      {sessions.length > 0 ? (
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          {sessions
+            .filter((session) => session.status === "approved")
+            .map((session) => (
+              <SessionCard key={session._id} data={session}></SessionCard>
+            ))}
+        </div>
+      ) : (
+        <h1 className="text-2xl font-semibold mt-36 text-center uppercase">
+          No Session Found
+        </h1>
+      )}
     </div>
   );
 };

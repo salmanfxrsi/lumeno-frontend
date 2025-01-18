@@ -1,13 +1,17 @@
 import { useQuery } from "@tanstack/react-query";
 import useAxiosPublic from "./useAxiosPublic";
 
-const useSessions = () => {
+const useSessions = (search) => {
   const axiosPublic = useAxiosPublic();
 
-  const { isLoading, refetch, data: sessions = [] } = useQuery({
-    queryKey: ["sessions"],
+  const {
+    isLoading,
+    refetch,
+    data: sessions = [],
+  } = useQuery({
+    queryKey: ["sessions", search],
     queryFn: async () => {
-      const { data } = await axiosPublic.get("/sessions");
+      const { data } = await axiosPublic.get(`/sessions?search=${search}`);
       return data;
     },
   });
