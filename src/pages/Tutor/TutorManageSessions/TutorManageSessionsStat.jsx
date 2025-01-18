@@ -11,7 +11,7 @@ const TutorManageSessionsStat = ({ sessions, pending, approved, rejected }) => {
         <div className="stat-figure text-2xl">
           <GiBookshelf />
         </div>
-        <div className="font-bold uppercase">My Sessions</div>
+        <div className="font-bold uppercase">Sessions</div>
         <div className="stat-value">{sessions}</div>
       </div>
 
