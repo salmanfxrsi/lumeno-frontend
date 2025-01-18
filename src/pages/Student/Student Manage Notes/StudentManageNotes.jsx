@@ -70,15 +70,21 @@ const StudentManageNotes = () => {
         </div>
       </div>
       {/* All Notes Showcase */}
-      <div className="grid gap-8 grid-cols-1 lg:grid-cols-2 2xl:grid-cols-3 mb-24">
-        {notes.map((note) => (
-          <StudentManageNotesCard
-            key={note._id}
-            note={note}
-            refetch={refetch}
-          ></StudentManageNotesCard>
-        ))}
-      </div>
+      {notes.length > 0 ? (
+        <div className="grid gap-8 grid-cols-1 lg:grid-cols-2 2xl:grid-cols-3 mb-24">
+          {notes.map((note) => (
+            <StudentManageNotesCard
+              key={note._id}
+              note={note}
+              refetch={refetch}
+            ></StudentManageNotesCard>
+          ))}
+        </div>
+      ) : (
+        <h1 className="text-2xl font-semibold mt-36 text-center uppercase">
+          No notes Found
+        </h1>
+      )}
     </div>
   );
 };
