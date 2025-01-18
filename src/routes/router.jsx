@@ -16,6 +16,7 @@ import StudentCreateNote from "../pages/Student/Student Create Note/StudentCreat
 import StudentManageNotes from "../pages/Student/Student Manage Notes/StudentManageNotes";
 import PrivateRoutes from "./PrivateRoutes";
 import AdminRoutes from "./AdminRoutes";
+import TutorRoutes from "./TutorRoutes";
 
 const router = createBrowserRouter([
   {
@@ -57,6 +58,7 @@ const router = createBrowserRouter([
       </PrivateRoutes>
     ),
     children: [
+      // Admin Routes
       {
         path: "admin-manage-users",
         element: (
@@ -87,13 +89,29 @@ const router = createBrowserRouter([
           </PrivateRoutes>
         ),
       },
+      // Tutor Routes
       {
         path: "tutor-create-session",
-        element: <TutorCreateSession></TutorCreateSession>,
+        element: (
+          <PrivateRoutes>
+            <TutorRoutes>
+              <TutorCreateSession></TutorCreateSession>
+            </TutorRoutes>
+          </PrivateRoutes>
+        ),
+      },
+      {
+        path: "tutor-manage-sessions",
+        element: (
+          <PrivateRoutes>
+            <TutorRoutes>
+              <TutorManageSessions></TutorManageSessions>
+            </TutorRoutes>
+          </PrivateRoutes>
+        ),
       },
       {
         path: "student-booked-sessions",
-        element: <TutorManageSessions></TutorManageSessions>,
       },
       {
         path: "student-create-note",
@@ -105,7 +123,6 @@ const router = createBrowserRouter([
       },
       {
         path: "student-view-study-materials",
-        element: <TutorManageSessions></TutorManageSessions>,
       },
     ],
   },
