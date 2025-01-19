@@ -18,6 +18,7 @@ import PrivateRoutes from "./PrivateRoutes";
 import AdminRoutes from "./AdminRoutes";
 import TutorRoutes from "./TutorRoutes";
 import StudentRoutes from "./StudentRoutes";
+import StudentBookedSessions from "../pages/Student/Student Booked Sessions/StudentBookedSessions";
 
 const router = createBrowserRouter([
   {
@@ -113,6 +114,13 @@ const router = createBrowserRouter([
       },
       {
         path: "student-booked-sessions",
+        element: (
+          <PrivateRoutes>
+            <StudentRoutes>
+              <StudentBookedSessions></StudentBookedSessions>
+            </StudentRoutes>
+          </PrivateRoutes>
+        ),
       },
       {
         path: "student-create-note",

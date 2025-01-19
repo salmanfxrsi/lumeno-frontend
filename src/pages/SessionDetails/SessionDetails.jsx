@@ -2,7 +2,6 @@ import { useQuery } from "@tanstack/react-query";
 import { useParams } from "react-router-dom";
 import useAxiosPublic from "../../hooks/useAxiosPublic";
 import Loading from "../../components/Loading";
-import { MdOutlineMenuBook } from "react-icons/md";
 
 import { Swiper, SwiperSlide } from "swiper/react";
 import { GoCodeReview } from "react-icons/go";
@@ -11,13 +10,11 @@ import "swiper/css/navigation";
 import { Navigation } from "swiper/modules";
 import { Helmet } from "react-helmet-async";
 import useRole from "../../hooks/useRole";
-import { useState } from "react";
 import useAxiosSecure from "../../hooks/useAxiosSecure";
 import toast from "react-hot-toast";
 import useAuth from "../../hooks/useAuth";
 
 const SessionDetails = () => {
-  const [isRegistrationClose, setRegistrationClose] = useState(false);
   const { id } = useParams();
   const axiosPublic = useAxiosPublic();
   const [, role] = useRole();
@@ -32,11 +29,14 @@ const SessionDetails = () => {
     },
   });
 
+  const { _id: sessionId, ...restOfSession } = session;
+
   if (isLoading) return <Loading></Loading>;
 
   const handleBookedSession = async () => {
     const bookedSessionData = {
-      ...session,
+      ...restOfSession,
+      sessionId,
       studentEmail: user.email,
       studentPhoto: user.photoURL,
       studentName: user.displayName,
@@ -84,15 +84,18 @@ const SessionDetails = () => {
         {role === "student" && (
           <button
             onClick={handleBookedSession}
-            disabled={isRegistrationClose}
+            disabled={new Date() > new Date(session?.registrationEndDate)}
             className={`flex items-center gap-1 ${
-              isRegistrationClose
+              new Date() > new Date(session?.registrationEndDate)
                 ? "bg-red-500 text-white cursor-not-allowed"
-                : "bg-[#ABEF5F] text-black"
-            } font-black uppercase w-[144px] px-5 py-3 text-sm transition-colors duration-300 transform rounded-md lg:w-auto hover:bg-gray-500 focus:outline-none mt-8`}
+                : "bg-[#ABEF5F] text-black hover:bg-gray-500 focus:outline-none"
+            } font-black uppercase w-[144px] px-5 py-3 text-sm transition-colors duration-300 transform rounded-md lg:w-auto mt-8`}
           >
-            <h1>{isRegistrationClose ? "Registration Closed" : "Book Now"}</h1>
-            <MdOutlineMenuBook className="text-xl" />
+            <h1>
+              {new Date() > new Date(session?.registrationEndDate)
+                ? "Registration Closed"
+                : "Book Now"}
+            </h1>
           </button>
         )}
       </div>
