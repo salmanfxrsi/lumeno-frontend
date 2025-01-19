@@ -1,8 +1,6 @@
-import { IoLogIn } from "react-icons/io5";
 import { Link, NavLink, useNavigate } from "react-router-dom";
 import useAuth from "../../hooks/useAuth";
 import toast from "react-hot-toast";
-// import logo from  '../../assets/logo.png'
 
 const Navbar = () => {
   const { user, signOut } = useAuth();
@@ -18,7 +16,7 @@ const Navbar = () => {
   );
 
   return (
-    <div className=" shadow-xl bg-[#ABEF5F] py-2 sticky top-0 z-50">
+    <div className=" shadow-xl bg-black text-white py-2 sticky top-0 z-50">
       <div className="navbar w-11/12 mx-auto py-2">
         <div className="navbar-start">
           <div className="dropdown">
@@ -62,7 +60,7 @@ const Navbar = () => {
         <div className="navbar-end flex gap-6">
           {/* avatar */}
           {user && (
-            <Link to='dashboard' className="avatar online">
+            <Link to="dashboard" className="avatar online">
               <div className="w-11 rounded-full">
                 <img src={user?.photoURL} />
               </div>
@@ -75,7 +73,6 @@ const Navbar = () => {
               className="flex items-center shadow-2xl border-2 border-black gap-1 bg-[#ABEF5F] font-black uppercase w-[144px] px-5 py-3 text-sm text-black transition-colors duration-300 transform rounded-md lg:w-auto hover:bg-gray-500 focus:outline-none"
             >
               <h1>Login Now</h1>
-              <IoLogIn className="text-xl" />
             </Link>
           )}
           {/* logout button */}
@@ -90,7 +87,6 @@ const Navbar = () => {
               className="flex items-center gap-1 bg-[#EF4444] font-black uppercase w-[144px] px-5 py-3 text-sm text-white transition-colors duration-300 transform rounded-md lg:w-auto hover:bg-gray-500 focus:outline-none"
             >
               <h1>Sign Out</h1>
-              <IoLogIn className="text-xl" />
             </button>
           )}
         </div>

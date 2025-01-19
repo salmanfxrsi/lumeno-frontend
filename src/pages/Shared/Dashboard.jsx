@@ -29,15 +29,15 @@ const Dashboard = () => {
       </Helmet>
       {/* Dashboard Heading */}
       <Link to="/">
-        <h1 className="uppercase font-black text-[#151515] text-2xl">
+        <h1 className="uppercase font-black text-white text-2xl">
           Lumenooo
         </h1>
-        <p className="text-[#151515] uppercase font-bold text-lg">
+        <p className="text-white uppercase font-bold text-lg">
           {role} Dashboard
         </p>
       </Link>
       {/* Home NavLink */}
-      <div className="my-[60px] flex flex-col gap-2">
+      <div className="my-[60px] flex flex-col gap-2 text-white">
         <NavLink to="/" className="flex items-center text-base font-bold gap-1">
           <IoIosHome className="text-xl" />
           <p className="mt-1">Home</p>
