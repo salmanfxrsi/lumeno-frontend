@@ -5,7 +5,6 @@ import useAuth from "./useAuth";
 const useRole = () => {
   const axiosSecure = useAxiosSecure();
   const { user } = useAuth();
-  console.log(user);
 
   const { isLoading, data: role } = useQuery({
     queryKey: ["role", user?.email],

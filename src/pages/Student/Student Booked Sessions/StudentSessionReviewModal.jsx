@@ -104,7 +104,7 @@ const StudentSessionReviewModal = ({
 };
 
 StudentSessionReviewModal.propTypes = {
-  isOpen: PropTypes.func,
+  isOpen: PropTypes.bool,
   setIsOpen: PropTypes.func,
   bookedSession: PropTypes.object,
   refetch: PropTypes.func,

@@ -29,9 +29,17 @@ const SessionDetails = () => {
     },
   });
 
+  const { data: reviews = [], isFetching } = useQuery({
+    queryKey: ["reviews", id],
+    queryFn: async () => {
+      const { data } = await axiosPublic.get(`/reviews/${id}`);
+      return data;
+    },
+  });
+
   const { _id: sessionId, ...restOfSession } = session;
 
-  if (isLoading) return <Loading></Loading>;
+  if ((isLoading, isFetching)) return <Loading></Loading>;
 
   const handleBookedSession = async () => {
     const bookedSessionData = {
@@ -53,12 +61,12 @@ const SessionDetails = () => {
   return (
     <div className="w-11/12 lg:container mx-auto grid grid-cols-2 gap-12 py-36">
       <Helmet>
-        <title>{session.sessionTitle} | Lumeno</title>
+        <title>Details | Lumeno</title>
       </Helmet>
       {/* Session Details */}
       <div className="px-8 py-12 bg-white rounded-md shadow-md md:min-h-[350px]">
         <div className="flex items-center gap-2">
-          <h2 className="text-3xl font-semibold">{session.sessionTitle}</h2>
+          <h2 className="text-3xl font-semibold">{session?.sessionTitle}</h2>
           {session.registrationFee === 0 && (
             <div className="bg-[#ABEF5F] font-bold px-3 rounded-2xl">Free</div>
           )}
@@ -68,17 +76,17 @@ const SessionDetails = () => {
             </div>
           )}
         </div>
-        <p className="text-lg mb-3">{session.sessionDescription}</p>
+        <p className="text-lg mb-3">{session?.sessionDescription}</p>
         <h2 className="text-2xl font-semibold">
-          Tutor Name: {session.tutorName}
+          Tutor Name: {session?.tutorName}
         </h2>
         <p className="text-lg mt-4">
           <span className="font-bold">Registration Period:</span>{" "}
-          {session.registrationStartDate} To {session.registrationEndDate}
+          {session.registrationStartDate} To {session?.registrationEndDate}
         </p>
         <p className="text-lg">
           <span className="font-bold">Class Start On:</span>{" "}
-          {session.classStartTime}
+          {session?.classStartTime}
         </p>
         {/* Book Now Button */}
         {role === "student" && (
@@ -106,7 +114,7 @@ const SessionDetails = () => {
           modules={[Navigation]}
           className="mySwiper mt-32"
         >
-          {session?.reviews?.map((review, index) => (
+          {reviews?.map((review, index) => (
             <SwiperSlide key={index}>
               <div className="px-24">
                 <div className="flex items-center gap-1 font-bold mb-3 text-2xl">
@@ -115,7 +123,7 @@ const SessionDetails = () => {
                 </div>
                 <div className="p">
                   <h1 className="font-bold text-2xl">{review.studentName}</h1>
-                  <p className="font-semibold">{review.email}</p>
+                  <p className="font-semibold">{review.studentEmail}</p>
                 </div>
                 <div>
                   <p>
