@@ -109,31 +109,37 @@ const SessionDetails = () => {
       </div>
       {/* Session Reviews */}
       <div className="px-4 bg-white rounded-md shadow-md md:min-h-[350px]">
-        <Swiper
-          navigation={true}
-          modules={[Navigation]}
-          className="mySwiper mt-32"
-        >
-          {reviews?.map((review, index) => (
-            <SwiperSlide key={index}>
-              <div className="px-24">
-                <div className="flex items-center gap-1 font-bold mb-3 text-2xl">
-                  <GoCodeReview className="text-" />
-                  <h1>Reviews</h1>
+        {reviews.length > 0 ? (
+          <Swiper
+            navigation={true}
+            modules={[Navigation]}
+            className="mySwiper mt-32"
+          >
+            {reviews?.map((review, index) => (
+              <SwiperSlide key={index}>
+                <div className="px-24">
+                  <div className="flex items-center gap-1 font-bold mb-3 text-2xl">
+                    <GoCodeReview className="text-" />
+                    <h1>Reviews</h1>
+                  </div>
+                  <div className="p">
+                    <h1 className="font-bold text-2xl">{review.studentName}</h1>
+                    <p className="font-semibold">{review.studentEmail}</p>
+                  </div>
+                  <div>
+                    <p>
+                      <span className="font-bold">Review:</span> {review.review}
+                    </p>
+                  </div>
                 </div>
-                <div className="p">
-                  <h1 className="font-bold text-2xl">{review.studentName}</h1>
-                  <p className="font-semibold">{review.studentEmail}</p>
-                </div>
-                <div>
-                  <p>
-                    <span className="font-bold">Review:</span> {review.review}
-                  </p>
-                </div>
-              </div>
-            </SwiperSlide>
-          ))}
-        </Swiper>
+              </SwiperSlide>
+            ))}
+          </Swiper>
+        ) : (
+          <h2 className="font-bold text-center mt-36 text-xl uppercase">
+            No Review Posted Yet
+          </h2>
+        )}
       </div>
       {/* Session Details */}
     </div>

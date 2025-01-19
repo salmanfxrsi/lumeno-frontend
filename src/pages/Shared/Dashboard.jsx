@@ -37,7 +37,7 @@ const Dashboard = () => {
         </p>
       </Link>
       {/* Home NavLink */}
-      <div className="my-[60px] flex flex-col gap-2 text-white">
+      <div className="my-[60px] flex flex-col gap-2 text-gray-400">
         <NavLink to="/" className="flex items-center text-base font-bold gap-1">
           <IoIosHome className="text-xl" />
           <p className="mt-1">Home</p>
