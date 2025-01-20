@@ -18,7 +18,7 @@ const Error = () => {
         </h1>
         <button
           onClick={() => navigate("/")}
-          className="mt-8 flex justify-center mx-auto items-center gap-1 bg-red-500 font-black uppercase w-full lg:w-[180px] px-5 py-3 text-sm text-white transition-colors duration-300 transform rounded-md hover:bg-gray-500 focus:outline-none animate-pulse"
+          className="mt-8 flex justify-center mx-auto items-center gap-1 bg-red-500 font-black uppercase w-full lg:w-[180px] px-5 py-3 text-sm text-white transition-colors duration-300 transform rounded-md hover:bg-gray-500 focus:outline-none"
         >
           <h1>Back To Home</h1>
           <IoIosSettings className="text-xl animate-spin" />

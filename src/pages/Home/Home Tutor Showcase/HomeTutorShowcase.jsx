@@ -16,7 +16,7 @@ const HomeTutorShowcase = () => {
 
   return (
     <div>
-      <Marquee pauseOnHover>
+      <Marquee>
         {tutors.map((tutor) => (
           <div
             key={tutor._id}

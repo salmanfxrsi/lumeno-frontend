@@ -14,8 +14,10 @@ import {
 } from "react-icons/md";
 import { SiMaterialformkdocs } from "react-icons/si";
 import { Helmet } from "react-helmet-async";
+import useAuth from "../../hooks/useAuth";
 
 const Dashboard = () => {
+  const { signOut } = useAuth()
   const [isLoading, role] = useRole();
 
   if (isLoading) return <Loading></Loading>;
@@ -36,14 +38,14 @@ const Dashboard = () => {
           {role} Dashboard
         </p>
       </Link>
-      {/* Home NavLink */}
+      {/* User Based NavLink */}
       <div className="my-[60px] flex flex-col gap-2 text-gray-400">
         <NavLink to="/" className="flex items-center text-base font-bold gap-1">
           <IoIosHome className="text-xl" />
           <p className="mt-1">Home</p>
         </NavLink>
 
-        {/* Tutor Routes */}
+        {/* Student Routes */}
         {role === "student" && (
           <>
             <NavLink
@@ -95,7 +97,7 @@ const Dashboard = () => {
               <p className="">My Sessions</p>
             </NavLink>
             <NavLink
-              to="tutor-upload-material"
+              to="tutor-upload-materials"
               className="flex items-center text-base font-bold gap-1"
             >
               <MdOutlineCloudUpload className="text-xl" />
@@ -138,6 +140,11 @@ const Dashboard = () => {
           </>
         )}
       </div>
+
+      <div className="">
+        <button onClick={signOut} className="py-1 px-20 text-white bg-red-500 uppercase rounded-lg font-black transition-colors duration-300 transform hover:bg-gray-500 focus:outline-none">Logout</button>
+      </div>
+
     </div>
   );
 };
