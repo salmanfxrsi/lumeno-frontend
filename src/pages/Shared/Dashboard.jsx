@@ -131,7 +131,7 @@ const Dashboard = () => {
               <p className="">Manage Sessions</p>
             </NavLink>
             <NavLink
-              to="all-users"
+              to="admin-manage-study-materials"
               className="flex items-center text-base font-bold gap-1"
             >
               <GiMaterialsScience className="text-xl" />

@@ -21,6 +21,7 @@ import StudentRoutes from "./StudentRoutes";
 import StudentBookedSessions from "../pages/Student/Student Booked Sessions/StudentBookedSessions";
 import TutorUploadMaterials from "../pages/Tutor/Tutor Upload Materials/TutorUploadMaterials";
 import TutorManageMaterials from "../pages/Tutor/Tutor Manage Materials/TutorManageMaterials";
+import AdminManageStudyMaterials from "../pages/Admin/Admin Manage Study Materials/AdminManageStudyMaterials";
 
 const router = createBrowserRouter([
   {
@@ -89,6 +90,16 @@ const router = createBrowserRouter([
           <PrivateRoutes>
             <AdminRoutes>
               <AdminUpdateSession></AdminUpdateSession>
+            </AdminRoutes>
+          </PrivateRoutes>
+        ),
+      },
+      {
+        path: "admin-manage-study-materials",
+        element: (
+          <PrivateRoutes>
+            <AdminRoutes>
+              <AdminManageStudyMaterials></AdminManageStudyMaterials>
             </AdminRoutes>
           </PrivateRoutes>
         ),
