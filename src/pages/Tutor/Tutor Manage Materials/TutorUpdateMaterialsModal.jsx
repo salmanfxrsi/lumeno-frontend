@@ -1,51 +1,32 @@
-import {
-    Dialog,
-    DialogBackdrop,
-    DialogPanel,
-    DialogTitle,
-    Field,
-    Label,
-    Input,
-} from "@headlessui/react";
+import { Dialog, DialogBackdrop, DialogPanel, DialogTitle, Field, Input, Label } from "@headlessui/react";
 import PropTypes from "prop-types";
 import useAxiosSecure from "../../../hooks/useAxiosSecure";
 import toast from "react-hot-toast";
-import useAuth from "../../../hooks/useAuth";
-const TutorUploadMaterialsModal = ({
-    isOpen,
-    setIsOpen,
-    session,
-    refetch,
-}) => {
-    const { user } = useAuth()
-    const axiosSecure = useAxiosSecure();
-    const { _id: sessionId, ...restOfSession } = session;
-    console.log(sessionId)
 
-    const handleCreateMaterial = async (event) => {
+const TutorUpdateMaterialsModal = ({ isOpen, setIsOpen, material, refetch }) => {
+    const { _id, sessionTitle, materialTitle, materialImage, materialLink } = material;
+    const axiosSecure = useAxiosSecure();
+
+
+    const handleUpdateMaterial = async (event) => {
         event.preventDefault();
         const form = event.target;
         const materialTitle = form.materialTitle.value;
         const materialImage = form.materialImage.value;
         const materialLink = form.materialLink.value;
-        const materialData = {
-            ...restOfSession,
-            sessionId,
-            materialTitle,
-            materialImage,
-            materialLink,
-        };
+        const materialData = { materialTitle, materialImage, materialLink }
         console.log(materialData)
 
         try {
-            await axiosSecure.post("/materials", materialData);
-            toast.success("Review Created");
-            setIsOpen(false);
+            await axiosSecure.patch(`/materials/${_id}`, materialData);
+            toast.success("Note Updated");
             refetch();
+            setIsOpen(false);
+            event.target.reset();
         } catch (error) {
             toast.error(error.message);
         }
-    };
+    }
 
     return (
         <>
@@ -62,35 +43,16 @@ const TutorUploadMaterialsModal = ({
                     {/* The actual dialog panel  */}
                     <DialogPanel className="max-w-lg space-y-4 bg-white p-12 rounded-sm">
                         <DialogTitle className="font-bold text-center mb-8">
-                            Session: {session.sessionTitle}
+                            Session: {sessionTitle}
                         </DialogTitle>
-                        <form onSubmit={handleCreateMaterial}>
-                            <Field className="mt-4">
-                                <Label className="font-semibold text-sm">Study Session ID</Label>
-                                <Input
-                                    type="text"
-                                    name="review"
-                                    className="pl-4 py-2 rounded-md border w-full mt-2 "
-                                    value={sessionId}
-                                    readOnly
-                                />
-                            </Field>
-                            <Field className="mt-4">
-                                <Label className="font-semibold text-sm">Tutor Email</Label>
-                                <Input
-                                    type="email"
-                                    name="tutorEmail"
-                                    className="pl-4 py-2 rounded-md border w-full mt-2"
-                                    value={user?.email}
-                                    readOnly
-                                />
-                            </Field>
+                        <form onSubmit={handleUpdateMaterial}>
                             <Field>
                                 <Label className="font-semibold text-sm">Material Title</Label>
                                 <Input
                                     type="text"
                                     name="materialTitle"
                                     className="pl-4 py-2 rounded-md border w-full mt-2 "
+                                    defaultValue={materialTitle}
                                     required
                                 />
                             </Field>
@@ -99,6 +61,7 @@ const TutorUploadMaterialsModal = ({
                                 <Input
                                     type="url"
                                     name="materialImage"
+                                    defaultValue={materialImage}
                                     className="pl-4 py-2 rounded-md border w-full mt-2 "
                                     required
                                 />
@@ -108,6 +71,7 @@ const TutorUploadMaterialsModal = ({
                                 <Input
                                     type="text"
                                     name="materialLink"
+                                    defaultValue={materialLink}
                                     className="pl-4 py-2 rounded-md border w-full mt-2 "
                                     required
                                 />
@@ -124,7 +88,7 @@ const TutorUploadMaterialsModal = ({
                                     type="submit"
                                     className="flex items-center gap-1.5 bg-[#ABEF5F] font-black uppercase w-[170px] px-5 py-3 text-sm text-black transition-colors duration-300 transform rounded-md hover:bg-gray-500 focus:outline-none mx-auto justify-center"
                                 >
-                                    Create Material
+                                    Update Material
                                 </button>
                             </div>
                         </form>
@@ -135,11 +99,11 @@ const TutorUploadMaterialsModal = ({
     );
 };
 
-TutorUploadMaterialsModal.propTypes = {
+TutorUpdateMaterialsModal.propTypes = {
     isOpen: PropTypes.bool,
     setIsOpen: PropTypes.func,
-    session: PropTypes.object,
+    material: PropTypes.object,
     refetch: PropTypes.func,
-};
+}
 
-export default TutorUploadMaterialsModal;
+export default TutorUpdateMaterialsModal;

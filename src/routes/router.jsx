@@ -20,6 +20,7 @@ import TutorRoutes from "./TutorRoutes";
 import StudentRoutes from "./StudentRoutes";
 import StudentBookedSessions from "../pages/Student/Student Booked Sessions/StudentBookedSessions";
 import TutorUploadMaterials from "../pages/Tutor/Tutor Upload Materials/TutorUploadMaterials";
+import TutorManageMaterials from "../pages/Tutor/Tutor Manage Materials/TutorManageMaterials";
 
 const router = createBrowserRouter([
   {
@@ -119,6 +120,16 @@ const router = createBrowserRouter([
           <PrivateRoutes>
             <TutorRoutes>
               <TutorUploadMaterials></TutorUploadMaterials>
+            </TutorRoutes>
+          </PrivateRoutes>
+        ),
+      },
+      {
+        path: "tutor-manage-materials",
+        element: (
+          <PrivateRoutes>
+            <TutorRoutes>
+              <TutorManageMaterials></TutorManageMaterials>
             </TutorRoutes>
           </PrivateRoutes>
         ),
