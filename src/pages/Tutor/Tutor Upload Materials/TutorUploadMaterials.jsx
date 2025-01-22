@@ -28,7 +28,7 @@ const TutorUploadMaterials = () => {
     return (
         <div className="pb-24 w-11/12 mx-auto">
             <Helmet>
-                <title>Manage Sessions | Lumeno Admin</title>
+                <title>Upload Material | Lumeno Tutor</title>
             </Helmet>
             <div className="mb-16 flex justify-between items-center mt-24">
                 {/* Search Bar */}

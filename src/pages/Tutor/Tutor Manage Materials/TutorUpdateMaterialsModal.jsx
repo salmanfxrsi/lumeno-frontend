@@ -19,7 +19,7 @@ const TutorUpdateMaterialsModal = ({ isOpen, setIsOpen, material, refetch }) => 
 
         try {
             await axiosSecure.patch(`/materials/${_id}`, materialData);
-            toast.success("Note Updated");
+            toast.success("Material Updated");
             refetch();
             setIsOpen(false);
             event.target.reset();

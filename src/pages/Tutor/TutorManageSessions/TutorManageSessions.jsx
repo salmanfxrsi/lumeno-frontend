@@ -29,7 +29,7 @@ const TutorManageSessions = () => {
   return (
     <div className="pb-24 w-11/12 mx-auto">
       <Helmet>
-        <title>Manage Sessions | Lumeno Admin</title>
+        <title>Manage Sessions | Lumeno Tutor</title>
       </Helmet>
       <div className="flex justify-between">
         <TutorManageSessionsStat
