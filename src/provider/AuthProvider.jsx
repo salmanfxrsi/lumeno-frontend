@@ -1,6 +1,7 @@
 /* eslint-disable react/prop-types */
 import {
   createUserWithEmailAndPassword,
+  GithubAuthProvider,
   GoogleAuthProvider,
   onAuthStateChanged,
   signInWithEmailAndPassword,
@@ -16,6 +17,7 @@ import useAxiosPublic from "../hooks/useAxiosPublic";
 export const AuthContext = createContext();
 const AuthProvider = ({ children }) => {
   const googleAuthProvider = new GoogleAuthProvider();
+  const githubAuthProvider = new GithubAuthProvider();
   const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(true);
   const axiosPublic = useAxiosPublic();
@@ -36,6 +38,12 @@ const AuthProvider = ({ children }) => {
   const googleSignIn = () => {
     setLoading(true);
     return signInWithPopup(auth, googleAuthProvider);
+  };
+
+  //   signIn user using github
+  const githubSignIn = () => {
+    setLoading(true);
+    return signInWithPopup(auth, githubAuthProvider);
   };
 
   //   signOut user
@@ -79,6 +87,7 @@ const AuthProvider = ({ children }) => {
     signUp,
     signIn,
     googleSignIn,
+    githubSignIn,
     signOut: customSignOut,
     updateUserProfile,
   };

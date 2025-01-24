@@ -7,6 +7,7 @@ import Lottie from "lottie-react";
 import { Helmet } from "react-helmet-async";
 import { SiSimplelogin } from "react-icons/si";
 import GoogleLogin from "../../components/GoogleLogin";
+import GithubLogin from "../../components/GithubLogin";
 
 const Login = () => {
     const { signIn, setUser } = useContext(AuthContext);
@@ -87,6 +88,7 @@ const Login = () => {
                     </h1>
                     {/* Google Login Button */}
                     <GoogleLogin />
+                    <GithubLogin />
                 </div>
             </div>
         </div>
