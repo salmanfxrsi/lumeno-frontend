@@ -20,7 +20,6 @@ const TutorUploadMaterialsModal = ({
     const { user } = useAuth()
     const axiosSecure = useAxiosSecure();
     const { _id: sessionId, ...restOfSession } = session;
-    console.log(sessionId)
 
     const handleCreateMaterial = async (event) => {
         event.preventDefault();
@@ -35,11 +34,10 @@ const TutorUploadMaterialsModal = ({
             materialImage,
             materialLink,
         };
-        console.log(materialData)
 
         try {
             await axiosSecure.post("/materials", materialData);
-            toast.success("Review Created");
+            toast.success("Material Uploaded");
             setIsOpen(false);
             refetch();
         } catch (error) {

@@ -1,30 +1,37 @@
 import { useQuery } from "@tanstack/react-query";
-import useAxiosSecure from "../../../hooks/useAxiosSecure";
 import { useState } from "react";
-import { RiResetRightFill } from "react-icons/ri";
-import { DiMaterializecss } from "react-icons/di";
+import useAxiosSecure from "../../../hooks/useAxiosSecure";
+import useAuth from "../../../hooks/useAuth";
+import Loading from "../../../components/Loading";
+import StudentViewStudyMaterialsCard from "./StudentViewStudyMaterialsCard";
+import { GiNotebook } from "react-icons/gi";
 import { FaSearch } from "react-icons/fa";
-import AdminManageStudyMaterialsCard from "./AdminManageStudyMaterialsCard";
 import { Helmet } from "react-helmet-async";
+import { RiResetRightFill } from "react-icons/ri";
 
-const AdminManageStudyMaterials = () => {
+const StudentViewStudyMaterials = () => {
+    const { user, loading } = useAuth();
     const axiosSecure = useAxiosSecure();
     const [search, setSearch] = useState("");
 
-    const { data: materials = [], refetch } = useQuery({
-        queryKey: ["materials", search],
+    const { data: bookedSessions = [], refetch } = useQuery({
+        queryKey: ["bookedSessions", user?.email, search],
         queryFn: async () => {
-            const { data } = await axiosSecure.get(`/materials?search=${search}`);
+            const { data } = await axiosSecure.get(
+                `/booked-sessions?studentEmail=${user?.email}&&search=${search}`
+            );
             return data;
-        }
-    })
+        },
+    });
+
+    if (loading) return <Loading></Loading>;
 
     return (
         <div className="w-11/12 3xl:container mx-auto">
             <Helmet>
-                <title>Manage Materials | Lumeno Admin</title>
+                <title>Study Materials | Lumeno Student</title>
             </Helmet>
-            {/* Manage Study Materials Header  */}
+            {/* Manage Notes Header  */}
             <div className="flex justify-between">
                 <div className="stats w-full my-12 flex flex-col-reverse 2xl:flex-row">
                     <div>
@@ -35,7 +42,7 @@ const AdminManageStudyMaterials = () => {
                                 <FaSearch className="text-black mx-3" />
                                 <input
                                     type="text"
-                                    placeholder="Search Session's Materials"
+                                    placeholder="Search"
                                     className="w-full py-2 outline-none text-lg"
                                     value={search}
                                     onChange={(e) => setSearch(e.target.value)}
@@ -55,31 +62,31 @@ const AdminManageStudyMaterials = () => {
                     {/* Note Stat */}
                     <div className="stat">
                         <div className="stat-figure text-2xl">
-                            <DiMaterializecss />
+                            <GiNotebook />
                         </div>
-                        <div className="font-bold uppercase">Materials Here</div>
-                        <div className="stat-value">{materials.length}</div>
+                        <div className="font-bold uppercase">Booked Sessions Here</div>
+                        <div className="stat-value">{bookedSessions.length}</div>
                     </div>
                 </div>
             </div>
-            {/* Load All Materials */}
-            {materials.length > 0 ? (
+            {/* All Notes Showcase */}
+            {bookedSessions.length > 0 ? (
                 <div className="grid gap-8 grid-cols-1 lg:grid-cols-2 2xl:grid-cols-3 mb-24">
-                    {materials.map((material) => (
-                        <AdminManageStudyMaterialsCard
-                            key={material._id}
-                            material={material}
+                    {bookedSessions.map((bookedSession) => (
+                        <StudentViewStudyMaterialsCard
+                            key={bookedSession._id}
+                            bookedSession={bookedSession}
                             refetch={refetch}
-                        ></AdminManageStudyMaterialsCard>
+                        ></StudentViewStudyMaterialsCard>
                     ))}
                 </div>
             ) : (
                 <h1 className="text-2xl font-semibold mt-36 text-center uppercase">
-                    No Material Found
+                    No Session Found
                 </h1>
             )}
         </div>
     );
 };
 
-export default AdminManageStudyMaterials;
+export default StudentViewStudyMaterials;
