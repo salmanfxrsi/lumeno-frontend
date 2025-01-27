@@ -1,5 +1,5 @@
 import { Link, useLocation, useNavigate } from "react-router-dom";
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { AuthContext } from "../../provider/AuthProvider";
 import toast from "react-hot-toast";
 import register_lottie from "../../assets/Authentication/register_lottie.json";
@@ -7,11 +7,19 @@ import Lottie from "lottie-react";
 import { Helmet } from "react-helmet-async";
 import { GiArchiveRegister } from "react-icons/gi";
 import GoogleLogin from "../../components/GoogleLogin";
+import GithubLogin from "../../components/GithubLogin";
+import useAxiosPublic from "../../hooks/useAxiosPublic";
 
 const Register = () => {
-    const { signIn, setUser } = useContext(AuthContext);
+    const { signUp, setUser } = useContext(AuthContext);
     const navigate = useNavigate();
     const location = useLocation();
+    const [role, setRole] = useState("student");
+    const axiosPublic = useAxiosPublic();
+
+    const handleRoleChange = (e) => {
+        setRole(e.target.value);
+    };
 
     const from = location?.state?.from?.pathname || "/";
 
@@ -19,9 +27,17 @@ const Register = () => {
         event.preventDefault();
         const form = event.target;
         const email = form.email.value;
+        const name = form.name.value;
+        const image = form.image.value;
         const password = form.password.value;
-        signIn(email, password)
-            .then((result) => {
+        signUp(email, password)
+            .then(async (result) => {
+                try {
+                    const userData = { email, name, image, role };
+                    await axiosPublic.post("/users", userData);
+                } catch (error) {
+                    toast.error(error.message)
+                }
                 setUser(result.user);
                 toast.success("Sign In Successful");
                 navigate(from, { replace: true });
@@ -95,14 +111,22 @@ const Register = () => {
                                 className="input input-bordered"
                                 required
                             />
-                            <label className="label">
-                                <a href="#" className="label-text-alt link link-hover">
-                                    Forgot password?
-                                </a>
-                            </label>
                         </div>
-                        <div className="form-control mt-2 lg:col-span-2">
-                            <button className="animate-pulse flex justify-center items-center gap-2 bg-[#ABEF5F] font-black uppercase px-5 py-3 text-sm text-black transition-colors duration-300 transform rounded-md lg:w-auto hover:bg-gray-500 focus:outline-none">
+                        <div className="mt-2">
+                            <select
+                                id="role"
+                                name="role"
+                                value={role}
+                                onChange={handleRoleChange}
+                                className="w-full p-2.5 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                            >
+                                <option value="student">Student</option>
+                                <option value="teacher">Teacher</option>
+                                <option value="admin">Admin</option>
+                            </select>
+                        </div>
+                        <div className="form-control mt-2">
+                            <button type="submit" className="flex justify-center items-center gap-2 bg-[#ABEF5F] font-black uppercase px-5 py-3 text-sm text-black transition-colors duration-300 transform rounded-md lg:w-auto hover:bg-gray-500 focus:outline-none">
                                 <h1>Register Now</h1>
                                 <GiArchiveRegister className="text-xl" />
                             </button>
@@ -115,7 +139,10 @@ const Register = () => {
                         </Link>
                     </h1>
                     {/* Google Login Button */}
-                    <GoogleLogin />
+                    <div className="grid grid-cols-2">
+                        <GoogleLogin />
+                        <GithubLogin />
+                    </div>
                 </div>
             </div>
         </div>
