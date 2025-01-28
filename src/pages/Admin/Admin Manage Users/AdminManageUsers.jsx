@@ -5,9 +5,11 @@ import AdminManageUsersStat from "./AdminManageUsersStat";
 import { Helmet } from "react-helmet-async";
 import Loading from "../../../components/Loading";
 import toast from "react-hot-toast";
+import useAuth from "../../../hooks/useAuth";
 
 const AdminManageUsers = () => {
   const axiosSecure = useAxiosSecure();
+  const { user } = useAuth();
 
   const {
     refetch,
@@ -121,7 +123,7 @@ const AdminManageUsers = () => {
             </tr>
           </thead>
           <tbody>
-            {users.map((user) => (
+            {users.filter(singleUser => singleUser.email !== user.email).map((user) => (
               <tr key={user._id}>
                 <td></td>
                 <td>

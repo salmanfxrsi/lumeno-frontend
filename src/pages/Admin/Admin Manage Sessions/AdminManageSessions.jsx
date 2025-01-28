@@ -8,7 +8,6 @@ import { TbListDetails } from "react-icons/tb";
 import { Link } from "react-router-dom";
 import useAxiosSecure from "../../../hooks/useAxiosSecure";
 import AdminManageSessionsStat from "./AdminManageSessionsStat";
-import { FcApproval, FcCancel } from "react-icons/fc";
 
 const AdminManageSessions = () => {
   const [isLoading, sessions, refetch] = useSessions();
@@ -115,22 +114,24 @@ const AdminManageSessions = () => {
                         onClick={() =>
                           handleUpdateStatus(session._id, "approved")
                         }
+                        className="flex items-center gap-1 bg-[#ABEF5F] font-black uppercase w-[144px] px-2 py-1 text-sm transition-colors duration-300 transform rounded-md lg:w-auto hover:bg-gray-500 focus:outline-none"
                       >
-                        <FcApproval />
+                        Approve
                       </button>
                       <button
                         onClick={() =>
                           handleUpdateStatus(session._id, "rejected")
                         }
+                        className="flex items-center gap-1 bg-[#EF4444] font-black uppercase w-[144px] px-2 py-1 text-sm text-white transition-colors duration-300 transform rounded-md lg:w-auto hover:bg-gray-500 focus:outline-none"
                       >
-                        <FcCancel />
+                        Cancel
                       </button>
                     </div>
                   ) : (
-                    <h1 className="font-bold">
+                    <div className={`${session?.status === 'rejected' ? "bg-[#EF4444] text-white" : "bg-[#ABEF5F]"} flex items-center gap-1 w-[100px] font-black uppercase px-2 py-1 text-xs  transition-colors duration-300 transform rounded-badge justify-center ml-8`}>
                       {session?.status.charAt(0).toUpperCase() +
                         session?.status.slice(1)}
-                    </h1>
+                    </div>
                   )}
                 </td>
 
