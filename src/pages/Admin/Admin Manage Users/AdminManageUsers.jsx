@@ -1,7 +1,6 @@
 import { useQuery } from "@tanstack/react-query";
 import useAxiosSecure from "../../../hooks/useAxiosSecure";
 import { RiDeleteBin5Line } from "react-icons/ri";
-import { FaUsersGear } from "react-icons/fa6";
 import AdminManageUsersStat from "./AdminManageUsersStat";
 import { Helmet } from "react-helmet-async";
 import Loading from "../../../components/Loading";
@@ -23,6 +22,41 @@ const AdminManageUsers = () => {
   });
 
   if (isLoading) return <Loading></Loading>;
+
+  // handle role change
+  const handleRoleChange = async (id, role) => {
+    try {
+      await axiosSecure.patch(`/users-role/${id}`, { role: role });
+      toast.success("Role Updated");
+      refetch();
+    } catch (error) {
+      toast.error(error.message);
+    }
+  };
+
+  // change role confirmation
+  const changeRoleConfirmation = (id, role) => {
+    toast((t) => (
+      <div className="flex gap-4 items-center justify-center">
+        <p className="font-semibold">Are You Sure?</p>
+        <button
+          className="bg-red-500 rounded-md w-full text-sm font-medium text-white capitalize transition-colors duration-300 transform lg:w-auto hover:bg-gray-500 text-center py-1 px-3"
+          onClick={() => {
+            toast.dismiss(t.id);
+            handleRoleChange(id, role);
+          }}
+        >
+          Sure
+        </button>
+        <button
+          className="bg-[#52C303] rounded-md w-full text-sm font-medium text-white capitalize transition-colors duration-300 transform lg:w-auto hover:bg-gray-500 text-center py-1 px-3"
+          onClick={() => toast.dismiss(t.id)}
+        >
+          Cancel
+        </button>
+      </div>
+    ));
+  };
 
   //   delete specific single post by id
   const handleDelete = async (id) => {
@@ -117,12 +151,21 @@ const AdminManageUsers = () => {
                   {user.role === "admin" ? (
                     "Contact With Owner"
                   ) : (
-                    <button
-                      //   onClick={() => handleUserRole(user._id)}
-                      className="btn bg-[#ABEF5F] text-black text-xl"
-                    >
-                      <FaUsersGear />
-                    </button>
+                    <div className="mt-2">
+                      <select
+                        id="role"
+                        name="role"
+                        value={user?.role}
+                        onChange={(e) =>
+                          changeRoleConfirmation(user._id, e.target.value)
+                        }
+                        className="w-full p-2.5 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                      >
+                        <option value="student">Student</option>
+                        <option value="tutor">Tutor</option>
+                        <option value="admin">Admin</option>
+                      </select>
+                    </div>
                   )}
                 </th>
                 {/* Delete User Button */}
