@@ -76,15 +76,6 @@ const AuthProvider = ({ children }) => {
         localStorage.removeItem("access-token")
       }
 
-      if (currentUser?.email) {
-        await axiosPublic.post("/users", {
-          email: currentUser?.email,
-          name: currentUser?.displayName,
-          image: currentUser?.photoURL,
-          role: "student",
-        });
-      }
-
       console.log(currentUser);
       setLoading(false);
     });

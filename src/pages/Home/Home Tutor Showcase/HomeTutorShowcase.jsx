@@ -12,7 +12,6 @@ const HomeTutorShowcase = () => {
       return data;
     },
   });
-  console.log(tutors);
 
   return (
     <div>
