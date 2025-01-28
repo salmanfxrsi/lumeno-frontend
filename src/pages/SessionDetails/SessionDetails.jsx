@@ -1,5 +1,5 @@
 import { useQuery } from "@tanstack/react-query";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import useAxiosPublic from "../../hooks/useAxiosPublic";
 import Loading from "../../components/Loading";
 
@@ -17,6 +17,7 @@ import useAuth from "../../hooks/useAuth";
 const SessionDetails = () => {
   const { id } = useParams();
   const axiosPublic = useAxiosPublic();
+  const navigate = useNavigate();
   const [, role] = useRole();
   const axiosSecure = useAxiosSecure();
   const { user } = useAuth();
@@ -53,9 +54,14 @@ const SessionDetails = () => {
     try {
       await axiosSecure.post("/booked-sessions", bookedSessionData);
       toast.success("Session Booked");
+      navigate('/dashboard/student-booked-sessions')
     } catch (error) {
       toast.error(error.message);
     }
+  };
+
+  const handleNavigateToPaymentPage = () => {
+    navigate("/payment");
   };
 
   return (
@@ -91,7 +97,11 @@ const SessionDetails = () => {
         {/* Book Now Button */}
         {role === "student" && (
           <button
-            onClick={handleBookedSession}
+            onClick={
+              session.registrationFee === 0
+                ? handleBookedSession
+                : handleNavigateToPaymentPage
+            }
             disabled={new Date() > new Date(session?.registrationEndDate)}
             className={`flex items-center gap-1 ${
               new Date() > new Date(session?.registrationEndDate)

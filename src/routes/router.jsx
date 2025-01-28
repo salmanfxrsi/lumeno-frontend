@@ -24,6 +24,7 @@ import TutorManageMaterials from "../pages/Tutor/Tutor Manage Materials/TutorMan
 import AdminManageStudyMaterials from "../pages/Admin/Admin Manage Study Materials/AdminManageStudyMaterials";
 import StudentViewStudyMaterials from "../pages/Student/Student View Study Materials/StudentViewStudyMaterials";
 import SessionMaterials from "../pages/SessionMaterials/SessionMaterials";
+import Payment from "../components/Payment/Payment";
 
 const router = createBrowserRouter([
   {
@@ -46,6 +47,10 @@ const router = createBrowserRouter([
       {
         path: "register",
         element: <Register />,
+      },
+      {
+        path: "payment",
+        element: <Payment />,
       },
       {
         path: "sessions/:id",
