@@ -8,10 +8,13 @@ import { TbListDetails } from "react-icons/tb";
 import { Link } from "react-router-dom";
 import useAxiosSecure from "../../../hooks/useAxiosSecure";
 import AdminManageSessionsStat from "./AdminManageSessionsStat";
+import AdminRejectSessionReasonModal from "./AdminRejectSessionReasonModal";
+import { useState } from "react";
 
 const AdminManageSessions = () => {
   const [isLoading, sessions, refetch] = useSessions();
   const axiosSecure = useAxiosSecure();
+  const [isOpen, setIsOpen] = useState(false);
 
   if (isLoading) return <Loading></Loading>;
 
@@ -119,16 +122,28 @@ const AdminManageSessions = () => {
                         Approve
                       </button>
                       <button
-                        onClick={() =>
-                          handleUpdateStatus(session._id, "rejected")
-                        }
+                        onClick={() => setIsOpen(true)}
                         className="flex items-center gap-1 bg-[#EF4444] font-black uppercase w-[144px] px-2 py-1 text-sm text-white transition-colors duration-300 transform rounded-md lg:w-auto hover:bg-gray-500 focus:outline-none"
                       >
                         Cancel
+                        {/* Appear Send Rejection Reason Modal If Rejected */}
+                        <AdminRejectSessionReasonModal
+                          isOpen={isOpen}
+                          setIsOpen={setIsOpen}
+                          id={session?._id}
+                          refetch={refetch}
+                          handleUpdateStatus={handleUpdateStatus}
+                        />
                       </button>
                     </div>
                   ) : (
-                    <div className={`${session?.status === 'rejected' ? "bg-[#EF4444] text-white" : "bg-[#ABEF5F]"} flex items-center gap-1 w-[100px] font-black uppercase px-2 py-1 text-xs  transition-colors duration-300 transform rounded-badge justify-center`}>
+                    <div
+                      className={`${
+                        session?.status === "rejected"
+                          ? "bg-[#EF4444] text-white"
+                          : "bg-[#ABEF5F]"
+                      } flex items-center gap-1 w-[100px] font-black uppercase px-2 py-1 text-xs  transition-colors duration-300 transform rounded-badge justify-center`}
+                    >
                       {session?.status.charAt(0).toUpperCase() +
                         session?.status.slice(1)}
                     </div>
