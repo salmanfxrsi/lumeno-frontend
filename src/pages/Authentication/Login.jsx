@@ -33,7 +33,7 @@ const Login = () => {
     };
 
     return (
-        <div className="hero py-36">
+        <div className="hero pb-12 lg:py-36">
             <Helmet>
                 <title>Login | Lumeno</title>
             </Helmet>

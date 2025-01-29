@@ -71,13 +71,13 @@ const Navbar = () => {
             <div className="flex items-center gap-3">
               <Link
                 to="login"
-                className="flex items-center shadow-2xl border-2 border-black gap-1 bg-[#ABEF5F] font-black uppercase w-[144px] px-5 py-3 text-sm text-black transition-colors duration-300 transform rounded-md lg:w-auto hover:bg-gray-500 focus:outline-none"
+                className="flex items-center shadow-2xl border-2 border-black gap-1 bg-[#ABEF5F] font-black uppercase px-5 py-3 text-sm text-black transition-colors duration-300 transform rounded-md lg:w-auto hover:bg-gray-500 focus:outline-none"
               >
                 <h1>Login</h1>
               </Link>
               <Link
                 to="register"
-                className="flex items-center shadow-2xl border-2 border-black gap-1 bg-[#ABEF5F] font-black uppercase w-[144px] px-5 py-3 text-sm text-black transition-colors duration-300 transform rounded-md lg:w-auto hover:bg-gray-500 focus:outline-none"
+                className="flex items-center shadow-2xl border-2 border-black gap-1 bg-[#ABEF5F] font-black uppercase px-5 py-3 text-sm text-black transition-colors duration-300 transform rounded-md lg:w-auto hover:bg-gray-500 focus:outline-none"
               >
                 <h1>SignUp</h1>
               </Link>
@@ -92,7 +92,7 @@ const Navbar = () => {
                 navigate("/");
               }}
               to="login"
-              className="flex items-center gap-1 bg-[#EF4444] font-black uppercase w-[144px] px-5 py-3 text-sm text-white transition-colors duration-300 transform rounded-md lg:w-auto hover:bg-gray-500 focus:outline-none"
+              className="flex items-center gap-1 bg-[#EF4444] font-black uppercase px-5 py-3 text-sm text-white transition-colors duration-300 transform rounded-md lg:w-auto hover:bg-gray-500 focus:outline-none"
             >
               <h1>Sign Out</h1>
             </button>
