@@ -141,7 +141,7 @@ const Dashboard = () => {
       <div className="">
         <button
           onClick={signOut}
-          className="py-1 px-20 text-white bg-red-500 uppercase rounded-lg font-black transition-colors duration-300 transform hover:bg-gray-500 focus:outline-none"
+          className="py-1 px-20 text-white bg-red-500 uppercase rounded-lg font-black transition-colors duration-300 transform hover:bg-gray-500 focus:outline-none text-sm"
         >
           Logout
         </button>

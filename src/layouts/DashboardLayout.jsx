@@ -13,7 +13,7 @@ const DashboardLayout = () => {
   return (
     <div className="relative flex">
       <div
-        className={`bg-black w-[350px] min-h-screen fixed lg:static transition-transform duration-300 ${
+        className={`bg-black w-[350px] lg:w-[400px] min-h-screen fixed lg:static transition-transform duration-300 ${
           isOpen ? "translate-x-0" : "-translate-x-full"
         } lg:translate-x-0 z-50`}
       >

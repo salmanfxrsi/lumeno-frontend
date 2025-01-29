@@ -50,21 +50,22 @@ const TutorCreateSession = () => {
   };
 
   return (
-    <div className="container mx-auto mt-20">
+    <div className="w-11/12 mx-auto mt-20 mb-24">
       <Helmet>
         <title>Create Session | Lumeno Tutor</title>
       </Helmet>
       {/* Header */}
       <div className="flex items-center gap-24">
         <h1 className="text-xl font-semibold uppercase">
-          Hello <span className="font-black">{user?.displayName}</span>, Request For A session Now
+          Hello <span className="font-black">{user?.displayName}</span>, Request
+          For A session Now
         </h1>
       </div>
 
       {/* Update Form */}
       <form
         onSubmit={handleSubmit}
-        className="container grid grid-cols-3 gap-12 mt-24"
+        className="container grid grid-cols-1 sm:grid-cols-2 2xl:grid-cols-3 gap-12 mt-24"
       >
         {/* Tutor Name */}
         <div className="mb-4">
@@ -175,26 +176,26 @@ const TutorCreateSession = () => {
           </label>
           <textarea
             type="text"
-            rows={5}
+            rows={3}
             name="sessionTitle"
             className="w-full px-3 py-2 border rounded-lg"
             required
           />
         </div>
         {/* Session Description */}
-        <div className="mb-4 col-span-3">
+        <div className="mb-4 grid-cols-1 sm:grid-cols-2 2xl:col-span-3">
           <label className="block text-gray-700 text-sm font-bold mb-2">
             Session Description
           </label>
           <textarea
-            rows={5}
             type="text"
+            rows={3}
             name="sessionDescription"
             className="w-full px-3 py-2 border rounded-lg"
             required
           />
         </div>
-        <button className="col-span-4 flex items-center w-full gap-3 bg-[#ABEF5F] font-black uppercase px-5 py-3 text-sm text-black transition-colors duration-300 transform rounded-sm hover:bg-gray-500 focus:outline-none mx-auto justify-center">
+        <button className="col-span-1 sm:col-span-2 2xl:col-span-4 flex items-center w-full gap-3 bg-[#ABEF5F] font-black uppercase px-5 py-3 text-sm text-black transition-colors duration-300 transform rounded-sm hover:bg-gray-500 focus:outline-none mx-auto justify-center">
           <h1>Create Session Now</h1>
         </button>
       </form>
