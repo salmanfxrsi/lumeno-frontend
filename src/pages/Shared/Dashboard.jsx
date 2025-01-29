@@ -4,7 +4,6 @@ import { TbBrandBooking } from "react-icons/tb";
 import { IoIosHome } from "react-icons/io";
 import { Link, NavLink } from "react-router-dom";
 import useRole from "../../hooks/useRole";
-import Loading from "../../components/Loading";
 import {
   MdAddChart,
   MdEventNote,
@@ -17,10 +16,10 @@ import { Helmet } from "react-helmet-async";
 import useAuth from "../../hooks/useAuth";
 
 const Dashboard = () => {
-  const { signOut } = useAuth()
+  const { signOut } = useAuth();
   const [isLoading, role] = useRole();
 
-  if (isLoading) return <Loading></Loading>;
+  if (isLoading) return;
 
   return (
     <div className="mt-[50px] ml-[35px]">
@@ -31,9 +30,7 @@ const Dashboard = () => {
       </Helmet>
       {/* Dashboard Heading */}
       <Link to="/">
-        <h1 className="uppercase font-black text-white text-2xl">
-          Lumenooo
-        </h1>
+        <h1 className="uppercase font-black text-white text-2xl">Lumenooo</h1>
         <p className="text-white uppercase font-bold text-lg">
           {role} Dashboard
         </p>
@@ -142,9 +139,13 @@ const Dashboard = () => {
       </div>
 
       <div className="">
-        <button onClick={signOut} className="py-1 px-20 text-white bg-red-500 uppercase rounded-lg font-black transition-colors duration-300 transform hover:bg-gray-500 focus:outline-none">Logout</button>
+        <button
+          onClick={signOut}
+          className="py-1 px-20 text-white bg-red-500 uppercase rounded-lg font-black transition-colors duration-300 transform hover:bg-gray-500 focus:outline-none"
+        >
+          Logout
+        </button>
       </div>
-
     </div>
   );
 };

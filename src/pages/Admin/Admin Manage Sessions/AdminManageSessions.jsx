@@ -128,7 +128,7 @@ const AdminManageSessions = () => {
                       </button>
                     </div>
                   ) : (
-                    <div className={`${session?.status === 'rejected' ? "bg-[#EF4444] text-white" : "bg-[#ABEF5F]"} flex items-center gap-1 w-[100px] font-black uppercase px-2 py-1 text-xs  transition-colors duration-300 transform rounded-badge justify-center ml-8`}>
+                    <div className={`${session?.status === 'rejected' ? "bg-[#EF4444] text-white" : "bg-[#ABEF5F]"} flex items-center gap-1 w-[100px] font-black uppercase px-2 py-1 text-xs  transition-colors duration-300 transform rounded-badge justify-center`}>
                       {session?.status.charAt(0).toUpperCase() +
                         session?.status.slice(1)}
                     </div>

@@ -123,68 +123,74 @@ const AdminManageUsers = () => {
             </tr>
           </thead>
           <tbody>
-            {users.filter(singleUser => singleUser.email !== user.email).map((user) => (
-              <tr key={user._id}>
-                <td></td>
-                <td>
-                  <div className="flex items-center gap-3">
-                    <div className="avatar">
-                      <div className="mask mask-squircle h-12 w-12">
-                        <img src={user?.image} alt={user?.name} />
+            {users
+              .filter((singleUser) => singleUser.email !== user.email)
+              .map((user) => (
+                <tr key={user._id}>
+                  <td></td>
+                  <td>
+                    <div className="flex items-center gap-3">
+                      <div className="avatar">
+                        <div className="mask mask-squircle h-12 w-12">
+                          <img src={user?.image} alt={user?.name} />
+                        </div>
                       </div>
                     </div>
-                  </div>
-                </td>
-                <td>
-                  <h1 className="font-bold">{user?.name}</h1>
-                </td>
-                <td>
-                  <h1 className="font-bold">{user?.email}</h1>
-                </td>
-                <td>
-                  <h1 className="font-bold">
-                    {user?.role
-                      ? user.role.charAt(0).toUpperCase() + user.role.slice(1)
-                      : ""}
-                  </h1>
-                </td>
-                {/* User Role Change Button */}
-                <th>
-                  {user.role === "admin" ? (
-                    "Contact With Owner"
-                  ) : (
-                    <div className="mt-2">
-                      <select
-                        id="role"
-                        name="role"
-                        value={user?.role}
-                        onChange={(e) =>
-                          changeRoleConfirmation(user._id, e.target.value)
-                        }
-                        className="w-full p-2.5 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                  </td>
+                  <td>
+                    <h1 className="font-bold">{user?.name}</h1>
+                  </td>
+                  <td>
+                    <h1 className="font-bold">{user?.email}</h1>
+                  </td>
+                  <td>
+                    <h1 className="font-bold">
+                      {user?.role
+                        ? user.role.charAt(0).toUpperCase() + user.role.slice(1)
+                        : ""}
+                    </h1>
+                  </td>
+                  {/* User Role Change Button */}
+                  <th>
+                    {user.role === "admin" ? (
+                      <div className="flex items-center gap-1 w-[160px] font-black uppercase px-2 py-1 text-xs  transition-colors duration-300 transform rounded-badge justify-center bg-red-500 text-white">
+                        No Access
+                      </div>
+                    ) : (
+                      <div className="mt-2">
+                        <select
+                          id="role"
+                          name="role"
+                          value={user?.role}
+                          onChange={(e) =>
+                            changeRoleConfirmation(user._id, e.target.value)
+                          }
+                          className="w-full p-2.5 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                        >
+                          <option value="student">Student</option>
+                          <option value="tutor">Tutor</option>
+                          <option value="admin">Admin</option>
+                        </select>
+                      </div>
+                    )}
+                  </th>
+                  {/* Delete User Button */}
+                  <th>
+                    {user.role === "admin" ? (
+                      <div className="flex items-center gap-1 w-[160px] font-black uppercase px-2 py-1 text-xs  transition-colors duration-300 transform rounded-badge justify-center bg-red-500 text-white">
+                        No Access
+                      </div>
+                    ) : (
+                      <button
+                        onClick={() => deleteConfirmation(user._id)}
+                        className="btn bg-red-500 text-white text-xl"
                       >
-                        <option value="student">Student</option>
-                        <option value="tutor">Tutor</option>
-                        <option value="admin">Admin</option>
-                      </select>
-                    </div>
-                  )}
-                </th>
-                {/* Delete User Button */}
-                <th>
-                  {user.role === "admin" ? (
-                    "Contact With Owner"
-                  ) : (
-                    <button
-                      onClick={() => deleteConfirmation(user._id)}
-                      className="btn bg-[#ABEF5F] text-black text-xl"
-                    >
-                      <RiDeleteBin5Line />
-                    </button>
-                  )}
-                </th>
-              </tr>
-            ))}
+                        <RiDeleteBin5Line />
+                      </button>
+                    )}
+                  </th>
+                </tr>
+              ))}
           </tbody>
         </table>
       </div>

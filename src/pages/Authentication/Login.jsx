@@ -74,7 +74,7 @@ const Login = () => {
                             </label>
                         </div>
                         <div className="form-control mt-2">
-                            <button className="animate-pulse flex justify-center items-center gap-2 bg-[#ABEF5F] font-black uppercase px-5 py-3 text-sm text-black transition-colors duration-300 transform rounded-md lg:w-auto hover:bg-gray-500 focus:outline-none">
+                            <button className="flex justify-center items-center gap-2 bg-[#ABEF5F] font-black uppercase px-5 py-3 text-sm text-black transition-colors duration-300 transform rounded-md lg:w-auto hover:bg-gray-500 focus:outline-none">
                                 <h1>Login Now</h1>
                                 <SiSimplelogin className="text-xl" />
                             </button>
