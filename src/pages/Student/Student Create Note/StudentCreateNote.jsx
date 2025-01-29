@@ -39,13 +39,13 @@ const StudentCreateNote = () => {
   };
 
   return (
-    <div className="mt-24 w-11/12 2xl::container mx-auto">
+    <div className="mt-24 w-11/12 mx-auto mb-12">
       <h1 className="uppercase text-2xl font-semibold mb-32">
         You Are Doing Great{" "}
         <span className="font-black">{user?.displayName}</span>, Keep It Up With
         Lumeno
       </h1>
-      <div className="grid grid-cols-2 gap-12">
+      <div className="grid grid-cols-1 2xl:grid-cols-2 gap-12 items-end">
         <form onSubmit={handleCreateNote} className="grid grid-cols-2 gap-6">
           <Field>
             <Label className="text-lg font-semibold">Student Email</Label>
