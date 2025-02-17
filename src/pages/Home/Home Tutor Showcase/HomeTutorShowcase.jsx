@@ -1,5 +1,4 @@
 import { useQuery } from "@tanstack/react-query";
-import Marquee from "react-fast-marquee";
 import useAxiosPublic from "../../../hooks/useAxiosPublic";
 
 const HomeTutorShowcase = () => {
@@ -15,33 +14,27 @@ const HomeTutorShowcase = () => {
 
   return (
     <div>
-      <Marquee>
+      <h1 className="text-5xl font-bold mb-20">Dedicated Tutors</h1>
+      <div className="grid lg:grid-cols-2 gap-8">
         {tutors.map((tutor) => (
           <div
             key={tutor._id}
-            className="card bg-base-100 image-full w-96 shadow-xl h-[226px] mr-24"
+            className="w-full p-8 shadow-xl flex gap-8 rounded-xl"
           >
-            <figure>
-              <img
-                src={tutor?.image}
-                className=" w-full object-top"
-                alt="Shoes"
-              />
-            </figure>
-            <div className="card-body">
-              <h2 className="card-title">
-                {(tutor.name && tutor?.name) || "Unknown"}
-              </h2>
-              <p>Email: {tutor?.email}</p>
-              <div className="card-actions justify-center">
-                <div className="bg-[#ABEF5F] text-black px-4 py-2 rounded-lg uppercase font-semibold">
-                  Our Tutor
-                </div>
-              </div>
+            {/* Image */}
+            <div>
+              <img className="w-24 h-24 rounded-lg" src={tutor.image} alt="" />
+            </div>
+            {/* Tutor Details */}
+            <div>
+              <h1 className="text-2xl font-bold">{tutor.name}</h1>
+              <p className="font-bold mt-1">
+                Email: <span className="font-medium">{tutor.email}</span>
+              </p>
             </div>
           </div>
         ))}
-      </Marquee>
+      </div>
     </div>
   );
 };
