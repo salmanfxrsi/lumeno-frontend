@@ -1,10 +1,8 @@
-import homeFAQ_image from "../../../assets/Home/homeFAQ_image.jpg";
-
 const HomeFAQ = () => {
   return (
     <div className="flex flex-col lg:flex-row-reverse items-center">
       <div className="flex-1">
-        <img src={homeFAQ_image} alt="" />
+        <img src="https://i.ibb.co.com/rR9cRjHQ/home-FAQ-image.jpg" alt="" />
       </div>
       <div className="flex-1">
         {/* FAQ 1 */}
