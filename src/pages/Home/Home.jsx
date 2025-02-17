@@ -15,7 +15,7 @@ const Home = () => {
       <div>
         <Banner></Banner>
       </div>
-      <div className="w-11/12 lg:container mx-auto py-24">
+      <div className="w-10/12 lg:container mx-auto py-24">
         <HomeSessionShowcase></HomeSessionShowcase>
       </div>
       <div className="w-11/12 lg:container mx-auto pb-24 pt-12">

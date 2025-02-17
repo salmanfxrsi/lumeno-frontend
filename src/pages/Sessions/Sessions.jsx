@@ -10,7 +10,7 @@ const Sessions = () => {
   const [, sessions] = useSessions(search); // Skip the first value [isLoading]
 
   return (
-    <div className="py-24 w-11/12 lg:container mx-auto">
+    <div className="py-24 w-10/12 lg:container mx-auto">
       <Helmet>
         <title>Sessions | Lumeno</title>
       </Helmet>

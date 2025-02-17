@@ -54,7 +54,7 @@ const SessionDetails = () => {
     try {
       await axiosSecure.post("/booked-sessions", bookedSessionData);
       toast.success("Session Booked");
-      navigate('/dashboard/student-booked-sessions')
+      navigate("/dashboard/student-booked-sessions");
     } catch (error) {
       toast.error(error.message);
     }
@@ -65,7 +65,7 @@ const SessionDetails = () => {
   };
 
   return (
-    <div className="w-11/12 lg:container mx-auto grid grid-cols-2 gap-12 py-36">
+    <div className="w-11/12 lg:container mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 py-36">
       <Helmet>
         <title>Details | Lumeno</title>
       </Helmet>
@@ -118,7 +118,7 @@ const SessionDetails = () => {
         )}
       </div>
       {/* Session Reviews */}
-      <div className="px-4 bg-white rounded-md shadow-md md:min-h-[350px]">
+      <div className="px-4 bg-white rounded-md shadow-md min-h-[350px]">
         {reviews.length > 0 ? (
           <Swiper
             navigation={true}
