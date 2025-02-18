@@ -5,6 +5,7 @@ import HomeFAQ from "./FAQ/HomeFAQ";
 import HomeTutorShowcase from "./Home Tutor Showcase/HomeTutorShowcase";
 import WhyChooseUs from "./WhyChooseUs/WhyChooseUs";
 import SubscribeUs from "./SubscribeUs/SubscribeUs";
+import FocusStudy from "./FocusStudy/FocusStudy";
 
 const Home = () => {
   return (
@@ -28,6 +29,9 @@ const Home = () => {
       </div>
       <div className="w-10/12 lg:container mx-auto pb-24 pt-12">
         <SubscribeUs></SubscribeUs>
+      </div>
+      <div className="w-10/12 lg:container mx-auto pb-24 pt-12">
+        <FocusStudy></FocusStudy>
       </div>
       <div className="w-11/12 lg:container mx-auto pb-24">
         <HomeFAQ></HomeFAQ>
