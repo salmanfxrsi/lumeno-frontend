@@ -6,6 +6,7 @@ import HomeTutorShowcase from "./Home Tutor Showcase/HomeTutorShowcase";
 import WhyChooseUs from "./WhyChooseUs/WhyChooseUs";
 import SubscribeUs from "./SubscribeUs/SubscribeUs";
 import FocusStudy from "./FocusStudy/FocusStudy";
+import OurSponsor from "./OurSponsor/OurSponsor";
 
 const Home = () => {
   return (
@@ -17,6 +18,9 @@ const Home = () => {
       {/* Banner Section */}
       <div>
         <Banner></Banner>
+      </div>
+      <div className="w-10/12 lg:container mx-auto pt-24 pb-12">
+        <OurSponsor></OurSponsor>
       </div>
       <div className="w-10/12 lg:container mx-auto py-24">
         <HomeSessionShowcase></HomeSessionShowcase>
