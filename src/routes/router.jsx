@@ -25,6 +25,7 @@ import AdminManageStudyMaterials from "../pages/Admin/Admin Manage Study Materia
 import StudentViewStudyMaterials from "../pages/Student/Student View Study Materials/StudentViewStudyMaterials";
 import SessionMaterials from "../pages/SessionMaterials/SessionMaterials";
 import Payment from "../components/Payment/Payment";
+import Tutors from "../pages/Tutors/Tutors";
 
 const router = createBrowserRouter([
   {
@@ -39,6 +40,10 @@ const router = createBrowserRouter([
       {
         path: "sessions",
         element: <Sessions />,
+      },
+      {
+        path: "tutors",
+        element: <Tutors />,
       },
       {
         path: "login",

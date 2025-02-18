@@ -19,8 +19,8 @@ const WhyChooseUs = () => {
             efficiency with our intuitive session management tools.
           </p>
         </div>
-        {/* Card 1 */}
-        <div className="p-8 rounded-2xl shadow-xl">
+        {/* Card 2 */}
+        <div className="p-8 shadow-xl">
           <img
             className="w-24 h-24"
             src="https://i.ibb.co.com/vvsrdNPP/img-icons8.png"
@@ -36,7 +36,7 @@ const WhyChooseUs = () => {
           </p>
         </div>
         {/* Card 1 */}
-        <div className="p-8 rounded-2xl shadow-xl">
+        <div className="p-8 shadow-xl">
           <img
             className="w-24 h-24"
             src="https://i.ibb.co.com/pBh0LRw1/img-icons8.png"

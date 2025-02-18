@@ -1,8 +1,10 @@
 import { useQuery } from "@tanstack/react-query";
 import useAxiosPublic from "../../../hooks/useAxiosPublic";
+import { useLocation } from "react-router-dom";
 
 const HomeTutorShowcase = () => {
   const axiosPublic = useAxiosPublic();
+  const { pathname } = useLocation();
 
   const { data: tutors = [] } = useQuery({
     queryKey: ["users"],
@@ -14,7 +16,7 @@ const HomeTutorShowcase = () => {
 
   return (
     <div>
-      <h1 className="text-5xl font-bold mb-20">Dedicated Tutors</h1>
+      {pathname !== "/tutors" && <h1 className="text-5xl font-bold mb-20">Dedicated Tutors</h1>}
       <div className="grid lg:grid-cols-2 gap-8">
         {tutors.map((tutor) => (
           <div

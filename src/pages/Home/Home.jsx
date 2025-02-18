@@ -3,6 +3,7 @@ import Banner from "./Banner/Banner";
 import HomeSessionShowcase from "./HomeSessionShowcase/HomeSessionShowcase";
 import HomeFAQ from "./FAQ/HomeFAQ";
 import HomeTutorShowcase from "./Home Tutor Showcase/HomeTutorShowcase";
+import WhyChooseUs from "./WhyChooseUs/WhyChooseUs";
 
 const Home = () => {
   return (
@@ -20,6 +21,9 @@ const Home = () => {
       </div>
       <div className="w-10/12 lg:container mx-auto pb-24 pt-12">
         <HomeTutorShowcase></HomeTutorShowcase>
+      </div>
+      <div className="w-10/12 lg:container mx-auto pb-24 pt-12">
+        <WhyChooseUs></WhyChooseUs>
       </div>
       <div className="w-11/12 lg:container mx-auto pb-24">
         <HomeFAQ></HomeFAQ>
