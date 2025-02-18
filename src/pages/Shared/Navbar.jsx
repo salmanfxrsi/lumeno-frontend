@@ -9,10 +9,29 @@ const Navbar = () => {
   // NavLinks
   const navbar_links = (
     <>
-      <NavLink to="/">Home</NavLink>
-      <NavLink to="/sessions">Sessions</NavLink>
-      <NavLink to="/tutors">Tutors</NavLink>
-      {user && <NavLink to="/dashboard">Dashboard</NavLink>}
+      <NavLink className="hover:font-bold hover:text-white duration-500" to="/">
+        Home
+      </NavLink>
+      <NavLink
+        className="hover:font-bold hover:text-white duration-500"
+        to="/sessions"
+      >
+        Sessions
+      </NavLink>
+      <NavLink
+        className="hover:font-bold hover:text-white duration-500"
+        to="/tutors"
+      >
+        Tutors
+      </NavLink>
+      {user && (
+        <NavLink
+          className="hover:font-bold hover:text-white duration-500"
+          to="/dashboard"
+        >
+          Dashboard
+        </NavLink>
+      )}
     </>
   );
 
