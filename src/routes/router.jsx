@@ -26,6 +26,7 @@ import StudentViewStudyMaterials from "../pages/Student/Student View Study Mater
 import SessionMaterials from "../pages/SessionMaterials/SessionMaterials";
 import Payment from "../components/Payment/Payment";
 import Tutors from "../pages/Tutors/Tutors";
+import MyProfile from "../pages/Dashboard/MyProfile";
 
 const router = createBrowserRouter([
   {
@@ -75,6 +76,10 @@ const router = createBrowserRouter([
       </PrivateRoutes>
     ),
     children: [
+      {
+        path: "profile",
+        element: <MyProfile></MyProfile>
+      },
       {
         path: "session-materials/:id",
         element: <SessionMaterials></SessionMaterials>

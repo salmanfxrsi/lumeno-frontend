@@ -4,6 +4,7 @@ import { TbBrandBooking } from "react-icons/tb";
 import { IoIosHome } from "react-icons/io";
 import { Link, NavLink } from "react-router-dom";
 import useRole from "../../hooks/useRole";
+import { CgProfile } from "react-icons/cg";
 import {
   MdAddChart,
   MdEventNote,
@@ -40,6 +41,10 @@ const Dashboard = () => {
         <NavLink to="/" className="flex items-center text-base font-bold gap-1">
           <IoIosHome className="text-xl" />
           <p className="mt-1">Home</p>
+        </NavLink>
+        <NavLink to="profile" className="flex items-center text-base font-bold gap-1">
+          <CgProfile className="text-xl" />
+          <p className="mt-1">My Profile</p>
         </NavLink>
 
         {/* Student Routes */}
