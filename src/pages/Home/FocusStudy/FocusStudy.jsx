@@ -2,7 +2,7 @@ const FocusStudy = () => {
   return (
     <div className="w-full">
       <iframe
-        className="w-full h-[500px]"
+        className="w-full h-[600px] rounded-lg"
         src="https://www.youtube.com/embed/fH7N9YRxMYc?si=MkkUnK3U80gEeH25"
         title="YouTube video player"
         frameBorder="0"

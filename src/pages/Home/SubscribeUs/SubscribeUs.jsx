@@ -1,6 +1,6 @@
 const SubscribeUs = () => {
   return (
-    <div className="grid grid-cols-1 lg:grid-cols-6 gap-12">
+    <div id="getUpdate" className="grid grid-cols-1 lg:grid-cols-6 gap-12">
       <div className="lg:col-span-2 p-10 rounded-2xl shadow-lg">
         <div>
           <h1 className="font-black text-[#131318] text-2xl mb-4">

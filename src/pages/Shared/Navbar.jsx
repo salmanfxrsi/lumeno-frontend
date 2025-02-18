@@ -1,10 +1,11 @@
-import { Link, NavLink, useNavigate } from "react-router-dom";
+import { Link, NavLink, useLocation, useNavigate } from "react-router-dom";
 import useAuth from "../../hooks/useAuth";
 import toast from "react-hot-toast";
 
 const Navbar = () => {
   const { user, signOut } = useAuth();
   const navigate = useNavigate("/");
+  const { pathname } = useLocation();
 
   // NavLinks
   const navbar_links = (
@@ -24,6 +25,22 @@ const Navbar = () => {
       >
         Tutors
       </NavLink>
+      {pathname === "/" && (
+        <>
+          <a
+            className="hover:font-bold hover:text-white duration-500"
+            href="#getUpdate"
+          >
+            Subscribe Us
+          </a>
+          <a
+            className="hover:font-bold hover:text-white duration-500"
+            href="#whyUs"
+          >
+            Why Us
+          </a>
+        </>
+      )}
       {user && (
         <NavLink
           className="hover:font-bold hover:text-white duration-500"

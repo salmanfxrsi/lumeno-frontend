@@ -1,6 +1,6 @@
 const WhyChooseUs = () => {
   return (
-    <div>
+    <div id="whyUs">
       <h1 className="text-5xl font-bold mb-20">Why Choose Us</h1>
       <div className="flex flex-col lg:flex-row gap-8">
         {/* Card 1 */}
