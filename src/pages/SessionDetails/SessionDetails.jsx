@@ -60,9 +60,9 @@ const SessionDetails = () => {
     }
   };
 
-  const handleNavigateToPaymentPage = () => {
-    navigate("/payment");
-  };
+  // const handleNavigateToPaymentPage = () => {
+  //   navigate("/payment");
+  // };
 
   return (
     <div className="w-11/12 lg:container mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 py-36">
@@ -98,9 +98,9 @@ const SessionDetails = () => {
         {role === "student" && (
           <button
             onClick={
-              session.registrationFee === 0
-                ? handleBookedSession
-                : handleNavigateToPaymentPage
+              // session.registrationFee === 0 ?
+              handleBookedSession
+              // : handleNavigateToPaymentPage
             }
             disabled={new Date() > new Date(session?.registrationEndDate)}
             className={`flex items-center gap-1 ${
