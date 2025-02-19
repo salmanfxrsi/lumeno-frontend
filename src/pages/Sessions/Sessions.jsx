@@ -2,12 +2,17 @@ import { Helmet } from "react-helmet-async";
 import SessionCard from "../../components/SessionCard";
 import useSessions from "../../hooks/useSessions";
 import { FaSearch } from "react-icons/fa";
-import { RiResetRightFill } from "react-icons/ri";
+import { RiArrowUpDownFill, RiResetRightFill } from "react-icons/ri";
 import { useState } from "react";
 
 const Sessions = () => {
+  const [sortOrder, setSortOrder] = useState("asc");
   const [search, setSearch] = useState("");
   const [, sessions] = useSessions(search); // Skip the first value [isLoading]
+
+  const toggleSortOrder = () => {
+    setSortOrder(sortOrder === "asc" ? "desc" : "asc");
+  };
 
   return (
     <div className="py-24 w-10/12 lg:container mx-auto">
@@ -27,20 +32,36 @@ const Sessions = () => {
             onChange={(e) => setSearch(e.target.value)}
           />
         </div>
-        {/* Reset Button */}
-        <button
-          onClick={() => setSearch("")}
-          className="flex items-center gap-1 bg-[#ABEF5F] font-black uppercase w-[144px] px-8 py-5 text-sm text-black transition-colors duration-300 transform rounded-md lg:w-auto hover:bg-gray-500 focus:outline-none ml-16"
-        >
-          <h1>Reset</h1>
-          <RiResetRightFill className="text-xl" />
-        </button>
+        <div className="flex">
+          {/* Sort Button */}
+          <button
+            onClick={toggleSortOrder}
+            className="flex items-center gap-1 bg-[#ABEF5F] font-black uppercase w-[144px] px-8 py-5 text-sm text-black transition-colors duration-300 transform rounded-md lg:w-auto hover:bg-gray-500 focus:outline-none ml-16"
+          >
+            <h1>Sort: {sortOrder === "asc" ? "⬆️" : "⬇️"}</h1>
+            <RiArrowUpDownFill className="text-xl" />
+          </button>
+
+          {/* Reset Button */}
+          <button
+            onClick={() => setSearch("")}
+            className="flex items-center gap-1 bg-[#ABEF5F] font-black uppercase w-[144px] px-8 py-5 text-sm text-black transition-colors duration-300 transform rounded-md lg:w-auto hover:bg-gray-500 focus:outline-none"
+          >
+            <h1>Reset</h1>
+            <RiResetRightFill className="text-xl" />
+          </button>
+        </div>
       </div>
       {/* All Sessions Showcase */}
       {sessions.length > 0 ? (
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12">
           {sessions
             .filter((session) => session.status === "approved")
+            .sort((a, b) =>
+              sortOrder === "asc"
+                ? a.registrationFee - b.registrationFee
+                : b.registrationFee - a.registrationFee
+            )
             .map((session) => (
               <SessionCard key={session._id} data={session}></SessionCard>
             ))}
