@@ -4,7 +4,7 @@ const WhyChooseUs = () => {
       <h1 className="text-5xl font-bold mb-20">Why Choose Us</h1>
       <div className="flex flex-col lg:flex-row gap-8">
         {/* Card 1 */}
-        <div className="p-8 flex flex-col shadow-xl">
+        <div className="p-8 flex flex-col shadow-xl rounded-2xl">
           <img
             className="w-24 h-24"
             src="https://i.ibb.co.com/SDVGLHGF/img-icons8.png"
@@ -20,7 +20,7 @@ const WhyChooseUs = () => {
           </p>
         </div>
         {/* Card 2 */}
-        <div className="p-8 shadow-xl">
+        <div className="p-8 shadow-xl rounded-2xl">
           <img
             className="w-24 h-24"
             src="https://i.ibb.co.com/vvsrdNPP/img-icons8.png"
@@ -35,8 +35,8 @@ const WhyChooseUs = () => {
             ensuring a customized and engaging educational experience.
           </p>
         </div>
-        {/* Card 1 */}
-        <div className="p-8 shadow-xl">
+        {/* Card 3 */}
+        <div className="p-8 shadow-xl rounded-2xl">
           <img
             className="w-24 h-24"
             src="https://i.ibb.co.com/pBh0LRw1/img-icons8.png"
