@@ -27,6 +27,7 @@ import SessionMaterials from "../pages/SessionMaterials/SessionMaterials";
 import Payment from "../components/Payment/Payment";
 import Tutors from "../pages/Tutors/Tutors";
 import MyProfile from "../pages/Dashboard/MyProfile";
+import OverallStat from "../pages/Dashboard/OverallStat/OverallStat";
 
 const router = createBrowserRouter([
   {
@@ -76,6 +77,10 @@ const router = createBrowserRouter([
       </PrivateRoutes>
     ),
     children: [
+      {
+        index: true,
+        element: <OverallStat></OverallStat>
+      },
       {
         path: "profile",
         element: <MyProfile></MyProfile>
