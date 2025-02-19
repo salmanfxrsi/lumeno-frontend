@@ -2,6 +2,7 @@ import { useQuery } from "@tanstack/react-query";
 import useAxiosSecure from "../../../hooks/useAxiosSecure";
 import AdminManageUsersStat from "../../Admin/Admin Manage Users/AdminManageUsersStat";
 import Loading from "../../../components/Loading";
+import SubscribeUs from "../../Home/SubscribeUs/SubscribeUs";
 
 const OverallStat = () => {
   const axiosSecure = useAxiosSecure();
@@ -24,6 +25,10 @@ const OverallStat = () => {
         tutors={users.filter((user) => user.role === "tutor").length}
         admins={users.filter((user) => user.role === "admin").length}
       ></AdminManageUsersStat>
+      {/* Chart */}
+      <div className="mt-12">
+        <SubscribeUs></SubscribeUs>
+      </div>
     </div>
   );
 };
