@@ -20,9 +20,9 @@ const Sessions = () => {
         <title>Sessions | Lumeno</title>
       </Helmet>
       {/* Search Section */}
-      <div className="mb-16 flex justify-between items-center">
+      <div className="mb-16 lg:flex justify-between items-center">
         {/* Search Bar */}
-        <div className="flex items-center border-2 w-[500px] rounded-lg p-1">
+        <div className="flex items-center border-2 lg:w-[500px] rounded-lg p-1">
           <FaSearch className="text-gray-600 mx-3 text-xl" />
           <input
             type="text"
@@ -32,11 +32,11 @@ const Sessions = () => {
             onChange={(e) => setSearch(e.target.value)}
           />
         </div>
-        <div className="flex">
+        <div className="flex gap-6 justify-center mt-6">
           {/* Sort Button */}
           <button
             onClick={toggleSortOrder}
-            className="flex items-center gap-1 bg-[#ABEF5F] font-black uppercase w-[144px] px-8 py-5 text-sm text-black transition-colors duration-300 transform rounded-md lg:w-auto hover:bg-gray-500 focus:outline-none ml-16"
+            className="flex items-center gap-1 bg-[#ABEF5F] font-black uppercase px-8 py-5 text-sm text-black transition-colors duration-300 transform rounded-md w-auto hover:bg-gray-500 focus:outline-none"
           >
             <h1>Sort: {sortOrder === "asc" ? "⬆️" : "⬇️"}</h1>
             <RiArrowUpDownFill className="text-xl" />
@@ -45,7 +45,7 @@ const Sessions = () => {
           {/* Reset Button */}
           <button
             onClick={() => setSearch("")}
-            className="flex items-center gap-1 bg-[#ABEF5F] font-black uppercase w-[144px] px-8 py-5 text-sm text-black transition-colors duration-300 transform rounded-md lg:w-auto hover:bg-gray-500 focus:outline-none"
+            className="flex items-center gap-1 bg-[#ABEF5F] font-black uppercase px-8 py-5 text-sm text-black transition-colors duration-300 transform rounded-md w-auto hover:bg-gray-500 focus:outline-none"
           >
             <h1>Reset</h1>
             <RiResetRightFill className="text-xl" />
